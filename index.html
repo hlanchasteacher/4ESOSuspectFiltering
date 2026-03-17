@@ -246,8 +246,8 @@
             <h2 style="color: #ffffff;">TARGET SECURED: VALERIE BLAKE</h2>
             <p>Outstanding work, Tech Unit! SWAT Team Alpha apprehended the suspect just as she was trying to leave the city.</p>
             <p>The school's master hard drive has been recovered safely, and the data is intact. Your forensic analysis was flawless.</p>
-            <h3 style="color: #ffaa00; margin-top: 30px;">[ ESCAPE ROOM COMPLETED ]</h3>
-            <p>Congratulations, Detectives. You may now close your consoles.</p>
+            <h3 style="color: #ffaa00; margin-top: 30px;">[ CASE CLOSED ]</h3>
+            <p>Excellent work, Techs. You are cleared to log off.</p>
         </div>
     </div>
 
@@ -277,7 +277,6 @@
             "Reviewing toll booth license plate scanners..."
         ];
 
-        // --- AUDIO FUNCTIONS ---
         function playPing() {
             try {
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -306,7 +305,6 @@
             } catch(e) {}
         }
 
-        // --- MODAL FUNCTIONS ---
         function openWarrant() {
             document.getElementById('warrantModal').style.display = 'block';
             document.getElementById('suspectNameInput').focus();
@@ -314,7 +312,7 @@
 
         function closeWarrant() {
             document.getElementById('warrantModal').style.display = 'none';
-            document.getElementById('suspectNameInput').value = ""; // clear input
+            document.getElementById('suspectNameInput').value = ""; 
         }
 
         function closeError() {
@@ -322,17 +320,14 @@
         }
 
         function submitWarrant() {
-            // Get the value, convert to lowercase, and remove extra spaces
             const input = document.getElementById('suspectNameInput').value.trim().toLowerCase();
             
-            // Allow for minor typos or inverted names (e.g. "Blake, Valerie")
             if (input.includes("valerie") && input.includes("blake")) {
                 closeWarrant();
                 document.getElementById('successModal').style.display = 'block';
                 playPing();
-                setTimeout(playPing, 200); // Double ping for success
+                setTimeout(playPing, 200); 
                 
-                // Stop the game timer/chatter
                 nextClueTime = 0;
                 nextChatterTime = 0;
             } else {
@@ -342,7 +337,6 @@
             }
         }
 
-        // Allow pressing "Enter" to submit the email
         document.getElementById("suspectNameInput").addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
                 event.preventDefault();
@@ -350,7 +344,6 @@
             }
         });
 
-        // --- CORE GAME ENGINE ---
         function updateChatter() {
             const randomMsg = chatterMessages[Math.floor(Math.random() * chatterMessages.length)];
             statusDiv.innerText = `>> SYSTEM STATUS: ${randomMsg}`;
