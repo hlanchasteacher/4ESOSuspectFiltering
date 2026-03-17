@@ -88,12 +88,12 @@
         
         <div class="email" id="introEmail">
             <div class="email-header">FROM: <span class="sender">Lead Inspector Silva</span> | SUBJECT: URGENT: The Server Heist</div>
-            <p>Tech Unit, we have a crisis. The master server hard drive was stolen. Field inspectors and the CSI lab are gathering evidence now. You have access to the city's 1,000-person suspect database. Process the incoming data and filter the list immediately. The first piece of evidence is attached.</p>
+            <p>Tech Unit, we have a crisis. The master server hard drive was stolen. Field inspectors and the CSI lab are gathering evidence now. You have access to the city's 1,000-person suspect database. Process the incoming data to identify the culprit. The first piece of evidence is attached.</p>
         </div>
 
         <div class="email clue">
             <div class="email-header">FROM: <span class="sender">Inspector Ramirez</span> | SUBJECT: Vehicle Color Update</div>
-            <p>Techs, I'm reviewing the street cams. The getaway car is either <span class="highlight">Black</span> or <span class="highlight">Silver</span>. Update the database.</p>
+            <p>Techs, I'm reviewing the street cams. The getaway car is either <span class="highlight">Black</span> or <span class="highlight">Silver</span>.</p>
         </div>
 
         <div class="email clue">
@@ -103,7 +103,7 @@
 
         <div class="email clue">
             <div class="email-header">FROM: <span class="sender">Inspector Costa</span> | SUBJECT: Age Estimate</div>
-            <p>Just interviewed a witness who saw the suspect running. Apply a number filter for Age: strictly greater than 25 (<span class="highlight">> 25</span>).</p>
+            <p>Just interviewed a witness who got a good look at the suspect running away. They are absolutely certain the perp is older than <span class="highlight">25</span> years old.</p>
         </div>
 
         <div class="email clue">
@@ -123,7 +123,7 @@
 
         <div class="email clue">
             <div class="email-header">FROM: <span class="sender">CSI Lab - Biometrics</span> | SUBJECT: Height Measurement</div>
-            <p>The suspect tripped the laser doorway sensors. We calculate their height is strictly greater than 160 cm (<span class="highlight">> 160</span>).</p>
+            <p>The suspect tripped the laser doorway sensors. Based on the angle, we calculate their height is strictly greater than <span class="highlight">160 cm</span>.</p>
         </div>
 
         <div class="email clue">
@@ -143,7 +143,7 @@
 
         <div class="email clue">
             <div class="email-header">FROM: <span class="sender">Inspector Ramirez</span> | SUBJECT: License Plate Partial</div>
-            <p>Traffic AI enhanced the footage. We can't see the whole plate, but it definitely CONTAINS the numbers <span class="highlight">78</span>. Run a text filter!</p>
+            <p>Traffic AI enhanced the footage. We can't see the whole license plate, but it definitely contains the numbers <span class="highlight">78</span> in that exact order.</p>
         </div>
 
         <div class="email clue">
@@ -158,7 +158,7 @@
 
         <div class="email clue">
             <div class="email-header">FROM: <span class="sender">CSI Lab - Forensics</span> | SUBJECT: Final Clue - Footprints</div>
-            <p>Plaster casts of the muddy footprints confirm a <span class="highlight">Boot</span>, and their shoe size is strictly greater than 40 (<span class="highlight">> 40</span>). Techs, you should only have ONE suspect left. Send us a name so we can make the arrest!</p>
+            <p>Plaster casts of the muddy footprints confirm the suspect was wearing a <span class="highlight">Boot</span>, and their shoe size is strictly greater than <span class="highlight">40</span>. Techs, if you processed the data correctly, you should only have ONE suspect left. Send us a name so we can make the arrest!</p>
         </div>
     </div>
 
@@ -173,8 +173,8 @@
         function getRandomTime() {
             // *** TEACHER TESTING TIP ***
             // Change '2' to '0', and the '2' below to '2', then '* 60' to '* 1' to test it in seconds!
-            const randomMinutes = Math.floor(Math.random() * 2) + 2; // Returns 2 or 3
-            return randomMinutes * 60; // Converts to seconds
+            const randomMinutes = Math.floor(Math.random() * 2) + 2; 
+            return randomMinutes * 60; 
         }
 
         function startInvestigation() {
