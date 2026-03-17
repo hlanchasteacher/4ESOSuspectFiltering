@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Crime Unit - Secure Webmail</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #0a0a0a;
+            color: #00ff00;
+            margin: 0;
+            padding: 30px;
+        }
+        .header {
+            border-bottom: 2px solid #00ff00;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h2 {
+            margin: 0;
+            letter-spacing: 1px;
+        }
+        button {
+            background-color: #00ff00;
+            color: #0a0a0a;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: inherit;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #00cc00;
+        }
+        button:disabled {
+            background-color: #004400;
+            color: #555;
+            cursor: not-allowed;
+            display: none; /* Hides the button once the investigation starts */
+        }
+        .inbox {
+            display: flex;
+            flex-direction: column-reverse; /* This makes new emails pop up at the top! */
+            gap: 15px;
+        }
+        .email {
+            border: 1px solid #005500;
+            background-color: #121212;
+            padding: 15px;
+            display: none; 
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
+        }
+        .email-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #005500;
+            padding-bottom: 8px;
+            font-size: 0.9em;
+        }
+        .sender { color: #ffaa00; }
+        .highlight { color: #ffffff; background-color: #004400; padding: 2px 4px; }
+        #status { 
+            font-weight: bold; 
+            color: #ffaa00; 
+            margin-top: 10px; 
+            margin-bottom: 25px; 
+            font-size: 1.2em;
+            text-shadow: 0 0 5px rgba(255, 170, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h2>🔒 DEPARTAMENTO DE CIBERCRIMEN - BANDEJA DE ENTRADA</h2>
+        <button onclick="startInvestigation()" id="startBtn">Initiate Server Uplink</button>
+    </div>
+    
+    <div id="status">System idle. Waiting for detectives to initiate uplink...</div>
+
+    <div class="inbox" id="emailContainer">
+        
+        <div class="email" id="introEmail">
+            <div class="email-header">FROM: <span class="sender">Chief Inspector</span> | SUBJECT: URGENT: The Server Heist</div>
+            <p>Detectives, the master hard drive is gone. We have a massive database of 1,000 suspects. The lab will automatically send decrypted packets as they process the evidence. Use your Excel filters to narrow down the suspects. Good luck.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">Traffic Cams</span> | SUBJECT: Vehicle Color Update</div>
+            <p>We checked the street cameras. The suspect fled in either a <span class="highlight">Black</span> or a <span class="highlight">Silver</span> car.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">Cell Tower Logs</span> | SUBJECT: Location Ping</div>
+            <p>We pinged their phone data. The suspect was definitely NOT at the <span class="highlight">Cinema</span> and NOT at the <span class="highlight">Park</span> at 8:00 PM.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">Witness Report</span> | SUBJECT: Age Estimate</div>
+            <p>A witness saw the suspect running. Apply a number filter for Age: strictly greater than 25 (<span class="highlight">> 25</span>).</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">Crime Scene Unit</span> | SUBJECT: Handedness</div>
+            <p>The lock to the server room was picked, and the scratch marks indicate the suspect is <span class="highlight">Left-handed</span>.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">Security Footage</span> | SUBJECT: Clothing ID</div>
+            <p>We recovered a blurry frame from a hallway camera. The suspect was wearing a <span class="highlight">Green</span> shirt.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">Tire Tracks</span> | SUBJECT: Vehicle Brand</div>
+            <p>Tire tread analysis suggests the getaway car was a <span class="highlight">Ford</span>.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">Doorway Sensors</span> | SUBJECT: Height Measurement</div>
+            <p>The suspect tripped the motion sensor. We calculate their height is strictly greater than 160 cm (<span class="highlight">> 160</span>).</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">Forensics Lab</span> | SUBJECT: Hair DNA Trace</div>
+            <p>We found a hair snagged on the server rack. DNA confirms the suspect has <span class="highlight">Brown</span> hair.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">Medical Examiner</span> | SUBJECT: Blood Type</div>
+            <p>The suspect cut themselves on the glass. The blood type is very rare: Type <span class="highlight">AB</span>.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">Lab Tech</span> | SUBJECT: Rh Factor Update</div>
+            <p>Following up on the blood work: The Rh factor is <span class="highlight">Negative (-)</span>.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">Traffic AI</span> | SUBJECT: License Plate Partial</div>
+            <p>We enhanced the getaway footage. We can't see the whole plate, but it definitely CONTAINS the numbers <span class="highlight">78</span>. Use a Text Filter!</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">Barista Witness</span> | SUBJECT: Eye Color</div>
+            <p>A barista served them coffee right before the heist. They confirm the suspect's eyes were <span class="highlight">Green</span>.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">Security Camera 2</span> | SUBJECT: Tattoos</div>
+            <p>We got a clear shot of their wrist as they reached for the door. The suspect has a <span class="highlight">Snake</span> tattoo.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">Crime Scene Unit</span> | SUBJECT: Final Clue - Footprints</div>
+            <p>Based on the mud outside, they were wearing a <span class="highlight">Boot</span>, and their shoe size is strictly greater than 40 (<span class="highlight">> 40</span>). You should only have ONE suspect left. Make the arrest!</p>
+        </div>
+    </div>
+
+    <script>
+        let currentClue = 0;
+        const clues = document.querySelectorAll('.clue');
+        const statusDiv = document.getElementById('status');
+        const btn = document.getElementById('startBtn');
+        const intro = document.getElementById('introEmail');
+        let timerInterval;
+
+        // Function to get a random time between 2 and 3 minutes
+        function getRandomTime() {
+            // *** TEACHER TESTING TIP ***
+            // Change '2' to '0', and the '2' below to '2', then '* 60' to '* 1' to test it in seconds!
+            const randomMinutes = Math.floor(Math.random() * 2) + 2; // Returns 2 or 3
+            return randomMinutes * 60; // Converts to seconds
+        }
+
+        function startInvestigation() {
+            btn.disabled = true;
+            intro.style.display = 'block'; 
+            queueNextClue();
+        }
+
+        function queueNextClue() {
+            if (currentClue < clues.length) {
+                let timeLeft = getRandomTime();
+                
+                timerInterval = setInterval(() => {
+                    let minutes = Math.floor(timeLeft / 60);
+                    let seconds = timeLeft % 60;
+                    
+                    minutes = minutes < 10 ? '0' + minutes : minutes;
+                    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+                    statusDiv.innerText = `Forensics processing... Next encrypted packet in: ${minutes}:${seconds}`;
+                    timeLeft--;
+
+                    if (timeLeft < 0) {
+                        clearInterval(timerInterval);
+                        deliverClue();
+                    }
+                }, 1000); 
+            }
+        }
+
+        function deliverClue() {
+            clues[currentClue].style.display = 'block';
+            currentClue++;
+            
+            if(currentClue === clues.length) {
+                statusDiv.innerText = "All data transmitted. Find the culprit!";
+                statusDiv.style.color = "#00ff00";
+            } else {
+                queueNextClue();
+            }
+        }
+    </script>
+</body>
+</html>
