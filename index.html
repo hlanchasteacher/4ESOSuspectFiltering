@@ -99,4 +99,196 @@
 
         <div class="email clue">
             <div class="email-header">FROM: <span class="sender">Inspector Chen</span> | SUBJECT: Location Ping</div>
-            <p>Cell tower data is in. The suspect was definitely NOT at the
+            <p>Cell tower data is in. The suspect was definitely NOT at the <span class="highlight">Cinema</span> and NOT at the <span class="highlight">Park</span> at 8:00 PM.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">Inspector Costa</span> | SUBJECT: Age Estimate</div>
+            <p>Just interviewed a witness who got a good look at the suspect running away. They are absolutely certain the perp is older than <span class="highlight">25</span> years old.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">CSI Lab - Forensics</span> | SUBJECT: Handedness</div>
+            <p>The lock to the server room was picked. The angle of the scratch marks confirms the perp is <span class="highlight">Left-handed</span>.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">Inspector Vance</span> | SUBJECT: Clothing ID</div>
+            <p>Pulled blurry hallway footage. It's tough to see, but the suspect is definitely wearing a <span class="highlight">Green</span> shirt.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">CSI Lab - Trace Evidence</span> | SUBJECT: Vehicle Brand</div>
+            <p>Tire tread analysis from the alleyway matches a <span class="highlight">Ford</span>.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">CSI Lab - Biometrics</span> | SUBJECT: Height Measurement</div>
+            <p>The suspect tripped the laser doorway sensors. Based on the angle, we calculate their height is strictly greater than <span class="highlight">160 cm</span>.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">CSI Lab - Genetics</span> | SUBJECT: Hair DNA Trace</div>
+            <p>We found a hair snagged on the server rack. DNA confirms the suspect has <span class="highlight">Brown</span> hair.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">CSI Lab - Serology</span> | SUBJECT: Blood Type</div>
+            <p>The suspect cut themselves on the broken glass. Blood type is very rare: Type <span class="highlight">AB</span>.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">CSI Lab - Serology</span> | SUBJECT: Rh Factor Update</div>
+            <p>Following up on the blood work: The Rh factor is <span class="highlight">Negative (-)</span>.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">Inspector Ramirez</span> | SUBJECT: License Plate Partial</div>
+            <p>Traffic AI enhanced the footage. We can't see the whole license plate, but it definitely contains the numbers <span class="highlight">78</span> in that exact order.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">Inspector Chen</span> | SUBJECT: Eye Color</div>
+            <p>The barista witness just remembered another detail. They confirm the suspect's eyes were <span class="highlight">Green</span>.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">Inspector Costa</span> | SUBJECT: Tattoos</div>
+            <p>Got a clear shot of their wrist from camera 2. The suspect has a <span class="highlight">Snake</span> tattoo.</p>
+        </div>
+
+        <div class="email clue">
+            <div class="email-header">FROM: <span class="sender">CSI Lab - Forensics</span> | SUBJECT: Final Clue - Footprints</div>
+            <p>Plaster casts of the muddy footprints confirm the suspect was wearing a <span class="highlight">Boot</span>, and their shoe size is strictly greater than <span class="highlight">40</span>. Techs, if you processed the data correctly, you should only have ONE suspect left. Send us a name so we can make the arrest!</p>
+        </div>
+    </div>
+
+    <script>
+        let currentClue = 0;
+        const clues = document.querySelectorAll('.clue');
+        const statusDiv = document.getElementById('status');
+        const btn = document.getElementById('startBtn');
+        const intro = document.getElementById('introEmail');
+        
+        let nextClueTime = 0;
+        let nextChatterTime = 0;
+        let isAlerting = false;
+
+        const chatterMessages = [
+            "Intercepting encrypted radio frequencies...",
+            "CSI Lab is analyzing blood samples...",
+            "Traffic patrols are heading to the A45 highway...",
+            "Cross-referencing fingerprint database...",
+            "Helicopter Unit 3 is scanning the warehouse district...",
+            "Running facial recognition on ATM cameras...",
+            "Decrypting burner phone logs...",
+            "SWAT team is on standby...",
+            "Forensics team is dusting the server racks...",
+            "Awaiting warrant approval from the judge...",
+            "Enhancing blurry CCTV street footage...",
+            "Reviewing toll booth license plate scanners..."
+        ];
+
+        function playPing() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                osc.type = 'sine'; 
+                osc.frequency.setValueAtTime(950, audioCtx.currentTime); 
+                
+                gain.gain.setValueAtTime(0.2, audioCtx.currentTime); 
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4); 
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.5);
+            } catch(e) {
+                console.log("Audio API blocked or not supported.");
+            }
+        }
+
+        function updateChatter() {
+            const randomMsg = chatterMessages[Math.floor(Math.random() * chatterMessages.length)];
+            statusDiv.innerText = `>> SYSTEM STATUS: ${randomMsg}`;
+        }
+
+        function getRandomTime() {
+            // *** TEACHER TESTING TIP ***
+            // Change '2' to '0', and the '2' below to '2', then '* 60000' to '* 1000' to test in seconds!
+            const randomMinutes = Math.floor(Math.random() * 2) + 2; 
+            return randomMinutes * 60000; // Returns time in milliseconds
+        }
+
+        function queueNextClue() {
+            if (currentClue < clues.length) {
+                // Set the exact future time on the system clock for the next clue
+                nextClueTime = Date.now() + getRandomTime();
+            } else {
+                nextClueTime = 0; // No more clues
+            }
+        }
+
+        function deliverClue() {
+            playPing(); 
+            clues[currentClue].style.display = 'block';
+            currentClue++;
+            
+            isAlerting = true;
+            statusDiv.innerText = ">> SYSTEM STATUS: *** NEW ENCRYPTED PACKET RECEIVED ***";
+            statusDiv.style.color = "#ffffff";
+            
+            if(currentClue === clues.length) {
+                statusDiv.innerText = ">> SYSTEM STATUS: All data transmitted. Identify the culprit!";
+                statusDiv.style.color = "#00ff00";
+                nextClueTime = 0; 
+                nextChatterTime = 0; 
+            } else {
+                // Keep the alert up for 3 seconds, then resume normal chatter
+                setTimeout(() => {
+                    isAlerting = false;
+                    statusDiv.style.color = "#ffaa00";
+                    updateChatter();
+                    nextChatterTime = Date.now() + 6000;
+                    queueNextClue();
+                }, 3000); 
+            }
+        }
+
+        function startInvestigation() {
+            btn.disabled = true;
+            intro.style.display = 'block'; 
+            
+            // Deliver the very first clue immediately
+            playPing();
+            clues[currentClue].style.display = 'block';
+            currentClue++;
+            
+            updateChatter();
+            
+            // Set initial timestamps
+            nextChatterTime = Date.now() + 6000;
+            queueNextClue();
+
+            // The Master Clock Loop: Checks the actual time every second
+            setInterval(() => {
+                let now = Date.now();
+                
+                // Check if it's time for a new clue
+                if (nextClueTime > 0 && now >= nextClueTime && !isAlerting) {
+                    deliverClue();
+                }
+                
+                // Check if it's time to change the random chatter
+                if (nextChatterTime > 0 && now >= nextChatterTime && !isAlerting) {
+                    updateChatter();
+                    nextChatterTime = now + 6000;
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
