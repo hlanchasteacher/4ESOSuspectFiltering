@@ -410,13 +410,12 @@
             btn.disabled = true;
             intro.style.display = 'block'; 
             
-            playPing();
-            clues[currentClue].style.display = 'block';
-            currentClue++;
-            
             updateChatter();
             nextChatterTime = Date.now() + 6000;
-            queueNextClue();
+            
+            // Set the timer for the very first clue to exactly 1 minute (60000 ms)
+            // *** TEACHER TESTING TIP *** Change 60000 to 1000 to test in 1 second!
+            nextClueTime = Date.now() + 60000;
 
             setInterval(() => {
                 let now = Date.now();
