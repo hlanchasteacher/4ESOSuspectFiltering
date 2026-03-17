@@ -3,428 +3,1279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Crime Unit - Tech Console</title>
+    <title>FCID — Forensic Cyber Intelligence Division</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #0a0a0a;
-            color: #00ff00;
-            margin: 0;
-            padding: 30px;
+        :root {
+            --navy: #0b1220;
+            --navy-mid: #111c2e;
+            --navy-light: #182540;
+            --panel: #0f1929;
+            --border: #1e3358;
+            --border-bright: #2a4a7f;
+            --gold: #c8a84b;
+            --gold-light: #e8c96a;
+            --blue-accent: #3a7bd5;
+            --blue-bright: #5b9cf6;
+            --red: #e03a3a;
+            --green-ok: #2ecc71;
+            --white: #eaf0fb;
+            --muted: #8a9ab8;
+            --mono: 'Share Tech Mono', monospace;
+            --head: 'Barlow Condensed', sans-serif;
+            --body: 'Rajdhani', sans-serif;
         }
-        .header {
-            border-bottom: 2px solid #00ff00;
-            padding-bottom: 15px;
-            margin-bottom: 25px;
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--body);
+            background-color: var(--navy);
+            color: var(--white);
+            min-height: 100vh;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(30,51,88,0.3) 39px, rgba(30,51,88,0.3) 40px),
+                repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(30,51,88,0.15) 39px, rgba(30,51,88,0.15) 40px);
+        }
+
+        /* ── TOP BANNER ── */
+        .top-banner {
+            background: linear-gradient(135deg, #060e1a 0%, #0b1626 100%);
+            border-bottom: 3px solid var(--gold);
+            padding: 0 32px;
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .top-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -3px; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+        }
+
+        .banner-badge {
+            padding: 16px 28px 16px 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-right: 1px solid var(--border-bright);
+            margin-right: 28px;
+        }
+        .badge-icon {
+            width: 64px;
+            height: 64px;
+            flex-shrink: 0;
+        }
+        .badge-text-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+        .badge-dept {
+            font-family: var(--head);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+        .badge-title {
+            font-family: var(--head);
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--white);
+            line-height: 1;
+        }
+        .badge-sub {
+            font-family: var(--head);
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+
+        .banner-center {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 16px 0;
+        }
+        .system-id-block {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .sys-label {
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--muted);
+            letter-spacing: 2px;
+        }
+        .sys-value {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--blue-bright);
+        }
+        .divider-v {
+            width: 1px;
+            height: 36px;
+            background: var(--border-bright);
+            margin: 0 24px;
+        }
+
+        .banner-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 0;
+        }
+
+        .btn {
+            font-family: var(--head);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            padding: 12px 22px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.08);
+            transition: left 0.3s;
+        }
+        .btn:hover::before { left: 0; }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1a3a6e, #2a5298);
+            color: var(--white);
+            border: 1px solid var(--border-bright);
+            box-shadow: 0 0 18px rgba(58,123,213,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2a5298, #3a6bc0);
+            box-shadow: 0 0 28px rgba(58,123,213,0.5);
+        }
+        .btn-primary:disabled {
+            background: #111c2e;
+            color: #334466;
+            border-color: #1e3358;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        .btn-warrant {
+            background: linear-gradient(135deg, #7a2020, #b03030);
+            color: var(--white);
+            border: 1px solid #c04040;
+            box-shadow: 0 0 18px rgba(176,48,48,0.4);
+        }
+        .btn-warrant:hover {
+            background: linear-gradient(135deg, #b03030, #d04040);
+            box-shadow: 0 0 30px rgba(200,60,60,0.6);
+        }
+
+        /* ── STATUS BAR ── */
+        .status-bar {
+            background: var(--panel);
+            border-bottom: 1px solid var(--border);
+            padding: 0 32px;
+            display: flex;
+            align-items: center;
+            gap: 0;
+            height: 42px;
+        }
+        .status-segment {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0 20px 0 0;
+            margin-right: 20px;
+            border-right: 1px solid var(--border);
+            height: 100%;
+        }
+        .status-segment:last-child { border-right: none; flex: 1; }
+        .status-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--green-ok);
+            box-shadow: 0 0 6px var(--green-ok);
+            animation: pulse-dot 2s infinite;
+        }
+        .status-dot.idle { background: var(--gold); box-shadow: 0 0 6px var(--gold); animation: none; }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .status-label {
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        .status-value {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--blue-bright);
+        }
+        #statusText {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--gold);
+            text-shadow: 0 0 8px rgba(200,168,75,0.5);
+            animation: none;
+        }
+        #statusText.alert {
+            color: #fff;
+            text-shadow: 0 0 12px rgba(255,255,255,0.6);
+            animation: text-flash 0.5s infinite;
+        }
+        @keyframes text-flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        /* ── MAIN LAYOUT ── */
+        .workspace {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 0;
+            min-height: calc(100vh - 130px);
+        }
+
+        /* ── LEFT SIDEBAR ── */
+        .sidebar {
+            background: var(--panel);
+            border-right: 1px solid var(--border);
+            padding: 20px 0;
+        }
+        .sidebar-section {
+            padding: 0 20px 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .sidebar-section:last-child { border-bottom: none; }
+        .sidebar-heading {
+            font-family: var(--head);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--muted);
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border);
+        }
+        .info-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(30,51,88,0.4);
         }
-        h2 {
-            margin: 0;
+        .info-row:last-child { border-bottom: none; }
+        .info-key {
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--muted);
             letter-spacing: 1px;
         }
-        .btn-group {
+        .info-val {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--white);
+        }
+        .info-val.live { color: var(--green-ok); }
+        .info-val.gold { color: var(--gold); }
+
+        .clue-tracker {
             display: flex;
-            gap: 15px;
+            flex-direction: column;
+            gap: 6px;
         }
-        button {
-            background-color: #00ff00;
-            color: #0a0a0a;
-            border: none;
-            padding: 12px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            font-family: inherit;
-            transition: background-color 0.3s;
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
-        }
-        button:hover {
-            background-color: #00cc00;
-        }
-        button:disabled {
-            background-color: #004400;
-            color: #555;
-            cursor: not-allowed;
-            display: none;
-        }
-        .arrest-btn {
-            background-color: #ffaa00;
-        }
-        .arrest-btn:hover {
-            background-color: #cc8800;
-        }
-        .download-btn {
-            background-color: #0088ff;
-            color: #ffffff;
-            margin-top: 15px;
-            display: inline-block;
-            text-decoration: none;
-            padding: 10px 15px;
-            font-weight: bold;
-            border: 1px solid #00aaff;
-            box-shadow: 0 0 10px rgba(0, 136, 255, 0.3);
-        }
-        .download-btn:hover {
-            background-color: #00aaff;
-            color: #0a0a0a;
-        }
-        .inbox {
+        .clue-item {
             display: flex;
-            flex-direction: column-reverse; 
-            gap: 15px;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 8px;
+            background: var(--navy-light);
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            opacity: 0.4;
+            transition: all 0.4s;
         }
-        .email {
-            border: 1px solid #005500;
-            background-color: #121212;
-            padding: 15px;
-            display: none; 
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
+        .clue-item.received {
+            opacity: 1;
+            border-color: var(--border-bright);
+            background: rgba(42,74,127,0.2);
         }
-        .email-header {
-            font-weight: bold;
-            margin-bottom: 10px;
-            border-bottom: 1px dashed #005500;
-            padding-bottom: 8px;
-            font-size: 0.9em;
+        .clue-item.received .clue-dot { background: var(--green-ok); box-shadow: 0 0 6px var(--green-ok); }
+        .clue-dot {
+            width: 7px; height: 7px; border-radius: 50%;
+            background: #334466;
+            flex-shrink: 0;
         }
-        .sender { color: #ffaa00; }
-        .highlight { color: #ffffff; background-color: #004400; padding: 2px 4px; }
-        #status { 
-            font-weight: bold; 
-            color: #ffaa00; 
-            margin-top: 10px; 
-            margin-bottom: 25px; 
-            font-size: 1.2em;
-            text-shadow: 0 0 5px rgba(255, 170, 0, 0.5);
-            min-height: 1.5em; 
+        .clue-name {
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--muted);
+        }
+        .clue-item.received .clue-name { color: var(--white); }
+
+        /* ── EMAIL FEED ── */
+        .feed-area {
+            padding: 24px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
         }
 
-        /* --- MODAL (POPUP) STYLES --- */
-        .modal {
-            display: none; 
-            position: fixed; z-index: 100; left: 0; top: 0;
-            width: 100%; height: 100%; overflow: auto;
-            background-color: rgba(0,0,0,0.85);
-            backdrop-filter: blur(5px);
+        .feed-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
         }
-        .modal-content {
-            background-color: #121212;
-            margin: 10% auto;
-            padding: 40px;
-            border: 2px solid #00ff00;
-            width: 50%;
-            max-width: 600px;
-            box-shadow: 0 0 30px rgba(0,255,0,0.3);
-        }
-        .modal-content.error {
-            border-color: #ff0000;
-            box-shadow: 0 0 30px rgba(255,0,0,0.3);
-            text-align: center;
-        }
-        .modal-content.success {
-            border-color: #00ff00;
-            text-align: center;
-        }
-        input[type="text"] {
-            width: 90%; padding: 12px; margin-top: 15px; margin-bottom: 25px;
-            background-color: #0a0a0a; color: #00ff00;
-            border: 1px solid #00ff00; font-family: inherit; font-size: 1.2em;
+        .feed-title {
+            font-family: var(--head);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--muted);
             text-transform: uppercase;
         }
-        input[type="text"]:focus {
-            outline: none; box-shadow: 0 0 10px rgba(0,255,0,0.5);
+        .feed-count {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--blue-bright);
         }
-        .email-draft-header { color: #888; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px;}
-        .email-draft-header span { color: #fff; }
+
+        .inbox {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 12px;
+        }
+
+        .email {
+            display: none;
+            border: 1px solid var(--border);
+            background: var(--navy-mid);
+            border-radius: 2px;
+            overflow: hidden;
+            animation: slide-in 0.5s ease forwards;
+        }
+        @keyframes slide-in {
+            from { opacity: 0; transform: translateY(-12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .email-header-bar {
+            background: var(--navy-light);
+            border-bottom: 1px solid var(--border);
+            padding: 10px 16px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 12px;
+        }
+        .email-classification {
+            font-family: var(--head);
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--navy);
+            background: var(--gold);
+            padding: 2px 7px;
+            border-radius: 1px;
+        }
+        .email-classification.urgent { background: var(--red); color: #fff; }
+        .email-meta { display: flex; flex-direction: column; gap: 1px; }
+        .email-from {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--gold-light);
+        }
+        .email-subject {
+            font-family: var(--head);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: var(--white);
+        }
+        .email-timestamp {
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--muted);
+            text-align: right;
+        }
+
+        .email-body {
+            padding: 16px 18px;
+            font-family: var(--body);
+            font-size: 16px;
+            font-weight: 500;
+            color: #c8d5eb;
+            line-height: 1.6;
+        }
+        .email-body p + p { margin-top: 10px; }
+
+        .highlight {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(58,123,213,0.18);
+            border: 1px solid var(--border-bright);
+            color: var(--blue-bright);
+            padding: 1px 8px;
+            font-family: var(--mono);
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 2px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 14px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #14305a, #1a4080);
+            border: 1px solid var(--border-bright);
+            color: var(--white);
+            font-family: var(--head);
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all 0.2s;
+            box-shadow: 0 0 16px rgba(58,123,213,0.25);
+        }
+        .download-btn:hover {
+            background: linear-gradient(135deg, #1a4080, #2a5fb0);
+            box-shadow: 0 0 28px rgba(91,156,246,0.4);
+            border-color: var(--blue-bright);
+        }
+
+        /* ── INTRO EMAIL ── */
+        #introEmail .email-body {
+            border-left: 3px solid var(--gold);
+            margin: 12px 18px;
+            padding: 12px 16px;
+            background: rgba(200,168,75,0.05);
+            border-radius: 0 2px 2px 0;
+        }
+
+        /* ── MODALS ── */
+        .modal {
+            display: none;
+            position: fixed; z-index: 200; left: 0; top: 0;
+            width: 100%; height: 100%;
+            background: rgba(6,12,24,0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal.open { display: flex; }
+
+        .modal-box {
+            background: var(--navy-mid);
+            border: 1px solid var(--border-bright);
+            width: 560px;
+            max-width: 95vw;
+            box-shadow: 0 0 60px rgba(0,0,0,0.8), 0 0 30px rgba(58,123,213,0.2);
+            animation: modal-appear 0.25s ease;
+            overflow: hidden;
+        }
+        @keyframes modal-appear {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .modal-box.danger { border-color: var(--red); box-shadow: 0 0 60px rgba(0,0,0,0.8), 0 0 30px rgba(224,58,58,0.3); }
+        .modal-box.success-modal { border-color: var(--green-ok); box-shadow: 0 0 60px rgba(0,0,0,0.8), 0 0 30px rgba(46,204,113,0.3); }
+
+        .modal-header {
+            background: var(--navy-light);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .modal-header .modal-title {
+            font-family: var(--head);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-transform: uppercase;
+        }
+        .modal-icon { font-size: 20px; }
+        .modal-body { padding: 28px 28px 24px; }
+        .modal-body p { font-size: 16px; color: #b0bdd4; line-height: 1.6; margin-bottom: 10px; }
+
+        .draft-meta {
+            background: rgba(15,25,41,0.8);
+            border: 1px solid var(--border);
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .draft-row { display: flex; gap: 10px; font-family: var(--mono); font-size: 11px; }
+        .draft-row .dr-key { color: var(--muted); min-width: 70px; }
+        .draft-row .dr-val { color: var(--white); }
+
+        .input-group { margin: 20px 0 24px; }
+        .input-label {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--navy);
+            color: var(--white);
+            border: 1px solid var(--border-bright);
+            font-family: var(--mono);
+            font-size: 16px;
+            letter-spacing: 1px;
+            transition: all 0.2s;
+            outline: none;
+        }
+        input[type="text"]:focus {
+            border-color: var(--blue-bright);
+            box-shadow: 0 0 0 3px rgba(91,156,246,0.15), 0 0 16px rgba(58,123,213,0.2);
+        }
+        input[type="text"]::placeholder { color: #334455; }
+
+        .modal-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 28px 24px;
+        }
+        .btn-ghost {
+            font-family: var(--head);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            background: transparent;
+            border: 1px solid var(--border-bright);
+            color: var(--muted);
+            cursor: pointer;
+            padding: 10px 20px;
+            transition: all 0.2s;
+        }
+        .btn-ghost:hover { border-color: var(--white); color: var(--white); }
+        .btn-send {
+            font-family: var(--head);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #7a2020, #b03030);
+            border: 1px solid #c04040;
+            color: var(--white);
+            cursor: pointer;
+            padding: 12px 28px;
+            box-shadow: 0 0 16px rgba(176,48,48,0.4);
+            transition: all 0.2s;
+        }
+        .btn-send:hover { background: linear-gradient(135deg, #b03030, #d04040); box-shadow: 0 0 28px rgba(200,60,60,0.6); }
+
+        /* Error modal */
+        .error-content { text-align: center; padding: 32px; }
+        .error-code {
+            font-family: var(--head);
+            font-size: 72px;
+            font-weight: 800;
+            color: var(--red);
+            line-height: 1;
+            text-shadow: 0 0 30px rgba(224,58,58,0.5);
+            margin-bottom: 8px;
+        }
+        .error-title {
+            font-family: var(--head);
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--white);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .error-content p { font-size: 16px; color: #b0bdd4; line-height: 1.6; margin-bottom: 10px; }
+        .btn-return {
+            font-family: var(--head);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: transparent;
+            border: 1px solid var(--red);
+            color: var(--red);
+            cursor: pointer;
+            padding: 12px 28px;
+            margin-top: 20px;
+            transition: all 0.2s;
+        }
+        .btn-return:hover { background: rgba(224,58,58,0.1); box-shadow: 0 0 16px rgba(224,58,58,0.3); }
+
+        /* Success modal */
+        .success-content { text-align: center; padding: 36px; }
+        .success-badge-icon { font-size: 56px; margin-bottom: 12px; filter: drop-shadow(0 0 20px rgba(46,204,113,0.5)); }
+        .success-case-closed {
+            font-family: var(--head);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 5px;
+            color: var(--green-ok);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .success-name {
+            font-family: var(--head);
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+        .success-content p { font-size: 16px; color: #b0bdd4; line-height: 1.6; margin-bottom: 8px; }
+        .commendation {
+            background: rgba(46,204,113,0.08);
+            border: 1px solid rgba(46,204,113,0.3);
+            padding: 16px 20px;
+            margin: 20px 0 0;
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--green-ok);
+            letter-spacing: 1px;
+        }
+
+        /* Clock */
+        #clock {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--blue-bright);
+        }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h2>🔒 CIBERCRIMEN - CONSOLA TÉCNICA</h2>
-        <div class="btn-group">
-            <button onclick="startInvestigation()" id="startBtn">Initiate Server Uplink</button>
-            <button onclick="openWarrant()" class="arrest-btn" id="arrestBtn">FILE ARREST WARRANT</button>
-        </div>
-    </div>
-    
-    <div id="status">>> SYSTEM IDLE. Waiting for Tech Unit to initiate uplink...</div>
-
-    <div class="inbox" id="emailContainer">
-        
-        <div class="email" id="introEmail">
-            <div class="email-header">FROM: <span class="sender">Lead Inspector Silva</span> | SUBJECT: URGENT: The Aegis Corp Heist</div>
-            <p>Tech Unit, we have a corporate espionage crisis. Last night, a highly classified prototype was stolen from the Aegis Corp R&D vault. Field inspectors and the CSI lab are gathering evidence now.</p>
-            <p>You have access to the city's 1,000-person suspect database. Download the encrypted file below and process the incoming data to identify the culprit.</p>
-            <a href="suspect_database.xlsx" download="suspect_database.xlsx" class="download-btn">📥 DOWNLOAD SUSPECT DATABASE</a>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">Inspector Ramirez</span> | SUBJECT: Vehicle Color Update</div>
-            <p>Techs, I'm reviewing the street cams outside Aegis Corp. The getaway car is either <span class="highlight">Black</span> or <span class="highlight">Silver</span>.</p>
+    <!-- ══════════════ TOP BANNER ══════════════ -->
+    <div class="top-banner">
+        <div class="banner-badge">
+            <!-- SVG Police Badge -->
+            <svg class="badge-icon" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="40,4 52,12 66,10 72,23 82,32 78,46 82,60 68,66 60,78 46,74 34,78 20,66 6,60 10,46 6,32 16,23 22,10 36,12" fill="none" stroke="#c8a84b" stroke-width="2.5" transform="scale(0.9) translate(4,2)"/>
+                <polygon points="40,10 50,17 62,15 67,27 76,35 72,47 76,58 64,63 57,73 45,70 34,73 22,63 10,58 14,47 10,35 18,27 23,15 35,17" fill="#0b1a30" stroke="#e8c96a" stroke-width="1" transform="scale(0.9) translate(4,2)"/>
+                <text x="40" y="39" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="11" font-weight="800" fill="#e8c96a" letter-spacing="0.5">FCID</text>
+                <text x="40" y="51" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="7" font-weight="600" fill="#8a9ab8" letter-spacing="1">CYBER</text>
+                <circle cx="40" cy="25" r="7" fill="none" stroke="#c8a84b" stroke-width="1.2"/>
+                <text x="40" y="29" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#c8a84b">⚖</text>
+            </svg>
+            <div class="badge-text-stack">
+                <span class="badge-dept">Forensic Cyber Intelligence Division</span>
+                <span class="badge-title">TECH OPERATIONS</span>
+                <span class="badge-sub">Secure Data Processing Terminal</span>
+            </div>
         </div>
 
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">Inspector Chen</span> | SUBJECT: Location Ping</div>
-            <p>Cell tower data is in. The suspect was definitely NOT at the <span class="highlight">Cinema</span> and NOT at the <span class="highlight">Park</span> at 8:00 PM.</p>
+        <div class="banner-center">
+            <div class="system-id-block">
+                <span class="sys-label">Operator ID</span>
+                <span class="sys-value">TECH-UNIT-04</span>
+            </div>
+            <div class="divider-v"></div>
+            <div class="system-id-block">
+                <span class="sys-label">Case Number</span>
+                <span class="sys-value">FC-2024-0817</span>
+            </div>
+            <div class="divider-v"></div>
+            <div class="system-id-block">
+                <span class="sys-label">Classification</span>
+                <span class="sys-value" style="color:var(--gold);">CONFIDENTIAL</span>
+            </div>
+            <div class="divider-v"></div>
+            <div class="system-id-block">
+                <span class="sys-label">System Clock</span>
+                <span id="clock" class="sys-value">--:--:--</span>
+            </div>
         </div>
 
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">Inspector Costa</span> | SUBJECT: Age Estimate</div>
-            <p>Just interviewed a witness who got a good look at the suspect running from the loading dock. They are absolutely certain the perp is older than <span class="highlight">25</span> years old.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">CSI Lab - Forensics</span> | SUBJECT: Handedness</div>
-            <p>The lock to the R&D vault was picked. The angle of the scratch marks confirms the perp is <span class="highlight">Left-handed</span>.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">Inspector Vance</span> | SUBJECT: Clothing ID</div>
-            <p>Pulled blurry hallway footage. It's tough to see, but the suspect is definitely wearing a <span class="highlight">Green</span> shirt.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">CSI Lab - Trace Evidence</span> | SUBJECT: Vehicle Brand</div>
-            <p>Tire tread analysis from the alleyway matches a <span class="highlight">Ford</span>.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">CSI Lab - Biometrics</span> | SUBJECT: Height Measurement</div>
-            <p>The suspect tripped the laser doorway sensors in the vault. Based on the angle, we calculate their height is strictly greater than <span class="highlight">160 cm</span>.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">CSI Lab - Genetics</span> | SUBJECT: Hair DNA Trace</div>
-            <p>We found a hair snagged on the vault door. DNA confirms the suspect has <span class="highlight">Brown</span> hair.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">CSI Lab - Serology</span> | SUBJECT: Blood Type</div>
-            <p>The suspect cut themselves on the broken display glass. Blood type is very rare: Type <span class="highlight">AB</span>.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">CSI Lab - Serology</span> | SUBJECT: Rh Factor Update</div>
-            <p>Following up on the blood work: The Rh factor is <span class="highlight">Negative (-)</span>.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">Inspector Ramirez</span> | SUBJECT: License Plate Partial</div>
-            <p>Traffic AI enhanced the footage. We can't see the whole license plate, but it definitely contains the numbers <span class="highlight">78</span> in that exact order.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">Inspector Chen</span> | SUBJECT: Eye Color</div>
-            <p>The barista witness just remembered another detail. They confirm the suspect's eyes were <span class="highlight">Green</span>.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">Inspector Costa</span> | SUBJECT: Tattoos</div>
-            <p>Got a clear shot of their wrist from camera 2. The suspect has a <span class="highlight">Snake</span> tattoo.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">CSI Lab - Forensics</span> | SUBJECT: Final Clue - Footprints</div>
-            <p>Plaster casts of the muddy footprints confirm the suspect was wearing a <span class="highlight">Boot</span>, and their shoe size is strictly greater than <span class="highlight">40</span>. Techs, if you processed the data correctly, you should only have ONE suspect left. Click 'FILE ARREST WARRANT' to send SWAT!</p>
+        <div class="banner-actions">
+            <button class="btn btn-primary" onclick="startInvestigation()" id="startBtn">
+                ⬡ INITIATE SERVER UPLINK
+            </button>
+            <button class="btn btn-warrant" onclick="openWarrant()" id="arrestBtn">
+                ⚑ FILE ARREST WARRANT
+            </button>
         </div>
     </div>
 
+    <!-- ══════════════ STATUS BAR ══════════════ -->
+    <div class="status-bar">
+        <div class="status-segment">
+            <div class="status-dot idle" id="statusDot"></div>
+            <span class="status-label">UPLINK</span>
+            <span class="status-value" id="uplinkStatus">IDLE</span>
+        </div>
+        <div class="status-segment">
+            <span class="status-label">ENCRYPTION</span>
+            <span class="status-value">AES-256</span>
+        </div>
+        <div class="status-segment">
+            <span class="status-label">PACKETS RX</span>
+            <span class="status-value" id="packetCount">0</span>
+        </div>
+        <div class="status-segment">
+            <span id="statusText">&gt;&gt; TERMINAL IDLE — AWAITING TECH UNIT AUTHENTICATION</span>
+        </div>
+    </div>
+
+    <!-- ══════════════ WORKSPACE ══════════════ -->
+    <div class="workspace">
+
+        <!-- LEFT SIDEBAR -->
+        <div class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-heading">Case Overview</div>
+                <div class="info-row"><span class="info-key">LEAD INSP.</span><span class="info-val">Silva, R.</span></div>
+                <div class="info-row"><span class="info-key">INCIDENT</span><span class="info-val gold">Corp. Espionage</span></div>
+                <div class="info-row"><span class="info-key">VICTIM</span><span class="info-val">Aegis Corp R&amp;D</span></div>
+                <div class="info-row"><span class="info-key">SUSPECTS</span><span class="info-val" id="suspectCountVal">1,000</span></div>
+                <div class="info-row"><span class="info-key">STATUS</span><span class="info-val live" id="caseStatus">ACTIVE</span></div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-heading">Evidence Log</div>
+                <div class="clue-tracker" id="clueTracker">
+                    <div class="clue-item" id="ct-vehicle-color"><div class="clue-dot"></div><span class="clue-name">Vehicle Color</span></div>
+                    <div class="clue-item" id="ct-location"><div class="clue-dot"></div><span class="clue-name">Cell Location</span></div>
+                    <div class="clue-item" id="ct-age"><div class="clue-dot"></div><span class="clue-name">Age Estimate</span></div>
+                    <div class="clue-item" id="ct-handedness"><div class="clue-dot"></div><span class="clue-name">Handedness</span></div>
+                    <div class="clue-item" id="ct-clothing"><div class="clue-dot"></div><span class="clue-name">Clothing ID</span></div>
+                    <div class="clue-item" id="ct-vehicle-brand"><div class="clue-dot"></div><span class="clue-name">Vehicle Brand</span></div>
+                    <div class="clue-item" id="ct-height"><div class="clue-dot"></div><span class="clue-name">Height Biometric</span></div>
+                    <div class="clue-item" id="ct-hair"><div class="clue-dot"></div><span class="clue-name">DNA — Hair</span></div>
+                    <div class="clue-item" id="ct-blood"><div class="clue-dot"></div><span class="clue-name">Blood Type</span></div>
+                    <div class="clue-item" id="ct-rh"><div class="clue-dot"></div><span class="clue-name">Rh Factor</span></div>
+                    <div class="clue-item" id="ct-plate"><div class="clue-dot"></div><span class="clue-name">License Plate</span></div>
+                    <div class="clue-item" id="ct-eyes"><div class="clue-dot"></div><span class="clue-name">Eye Color</span></div>
+                    <div class="clue-item" id="ct-tattoo"><div class="clue-dot"></div><span class="clue-name">Tattoo ID</span></div>
+                    <div class="clue-item" id="ct-footprint"><div class="clue-dot"></div><span class="clue-name">Footprint Analysis</span></div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-heading">Data Source</div>
+                <div class="info-row"><span class="info-key">FILE</span><span class="info-val">suspect_db.xlsx</span></div>
+                <div class="info-row"><span class="info-key">RECORDS</span><span class="info-val">1,000</span></div>
+                <div class="info-row"><span class="info-key">FORMAT</span><span class="info-val live">XLSX</span></div>
+            </div>
+        </div>
+
+        <!-- MAIN FEED -->
+        <div class="feed-area">
+            <div class="feed-header">
+                <span class="feed-title">🔐 Secure Encrypted Transmission Log</span>
+                <span class="feed-count" id="feedCount">0 / 15 packets received</span>
+            </div>
+
+            <div class="inbox" id="emailContainer">
+
+                <!-- INTRO -->
+                <div class="email" id="introEmail">
+                    <div class="email-header-bar">
+                        <span class="email-classification urgent">URGENT</span>
+                        <div class="email-meta">
+                            <span class="email-from">FROM: Lead Inspector Silva &lt;silva@fcid.gov&gt;</span>
+                            <span class="email-subject">SUBJECT: CASE FC-2024-0817 — The Aegis Corp R&amp;D Heist</span>
+                        </div>
+                        <span class="email-timestamp">UPLINK ESTABLISHED</span>
+                    </div>
+                    <div class="email-body">
+                        <p>Tech Unit, we have a critical corporate espionage case. Last night, a highly classified prototype was stolen from the Aegis Corp R&amp;D vault. Field inspectors and the CSI lab are actively gathering forensic evidence and will transmit clues to your terminal as they become available.</p>
+                        <p>You have been granted access to the city's 1,000-person suspect database. Download the encrypted file below, open it in Excel, and use the incoming evidence to filter down to a single suspect. When you have identified the culprit, file the arrest warrant using the button above. SWAT Team Alpha is on standby.</p>
+                        <a href="suspect_database.xlsx" download="suspect_database.xlsx" class="download-btn">📥 DOWNLOAD SUSPECT DATABASE (XLSX)</a>
+                    </div>
+                </div>
+
+                <!-- CLUES -->
+                <div class="email clue" data-tracker="ct-vehicle-color">
+                    <div class="email-header-bar">
+                        <span class="email-classification">CLUE</span>
+                        <div class="email-meta">
+                            <span class="email-from">FROM: Inspector Ramirez &lt;ramirez@fcid.gov&gt;</span>
+                            <span class="email-subject">SUBJECT: Getaway Vehicle — Color Analysis</span>
+                        </div>
+                        <span class="email-timestamp" data-ts></span>
+                    </div>
+                    <div class="email-body">
+                        <p>Reviewing street cam footage outside Aegis Corp. The getaway vehicle is either <span class="highlight">⬤ Black</span> or <span class="highlight">⬤ Silver</span>. Filter your database accordingly.</p>
+                    </div>
+                </div>
+
+                <div class="email clue" data-tracker="ct-location">
+                    <div class="email-header-bar">
+                        <span class="email-classification">CLUE</span>
+                        <div class="email-meta">
+                            <span class="email-from">FROM: Inspector Chen &lt;chen@fcid.gov&gt;</span>
+                            <span class="email-subject">SUBJECT: Cell Tower Location Ping — 20:00 hrs</span>
+                        </div>
+                        <span class="email-timestamp" data-ts></span>
+                    </div>
+                    <div class="email-body">
+                        <p>Cell tower data confirmed. Suspect was definitively <strong>NOT</strong> at the <span class="highlight">🎬 Cinema</span> and <strong>NOT</strong> at the <span class="highlight">🌳 Park</span> at 20:00 hrs. Eliminate those location records.</p>
+                    </div>
+                </div>
+
+                <div class="email clue" data-tracker="ct-age">
+                    <div class="email-header-bar">
+                        <span class="email-classification">CLUE</span>
+                        <div class="email-meta">
+                            <span class="email-from">FROM: Inspector Costa &lt;costa@fcid.gov&gt;</span>
+                            <span class="email-subject">SUBJECT: Witness Statement — Age Estimate</span>
+                        </div>
+                        <span class="email-timestamp" data-ts></span>
+                    </div>
+                    <div class="email-body">
+                        <p>Witness observed the suspect fleeing the loading dock. High confidence: the perpetrator is strictly older than <span class="highlight">25 yrs</span>. Filter Age &gt; 25.</p>
+                    </div>
+                </div>
+
+                <div class="email clue" data-tracker="ct-handedness">
+                    <div class="email-header-bar">
+                        <span class="email-classification">CLUE</span>
+                        <div class="email-meta">
+                            <span class="email-from">FROM: CSI Lab — Forensics &lt;forensics@fcid.gov&gt;</span>
+                            <span class="email-subject">SUBJECT: Lock-Pick Analysis — Vault Door</span>
+                        </div>
+                        <span class="email-timestamp" data-ts></span>
+                    </div>
+                    <div class="email-body">
+                        <p>The R&amp;D vault lock was manually bypassed. Scratch mark angle analysis conclusively identifies the perpetrator as <span class="highlight">✋ Left-Handed</span>.</p>
+                    </div>
+                </div>
+
+                <div class="email clue" data-tracker="ct-clothing">
+                    <div class="email-header-bar">
+                        <span class="email-classification">CLUE</span>
+                        <div class="email-meta">
+                            <span class="email-from">FROM: Inspector Vance &lt;vance@fcid.gov&gt;</span>
+                            <span class="email-subject">SUBJECT: Hallway CCTV — Clothing Identification</span>
+                        </div>
+                        <span class="email-timestamp" data-ts></span>
+                    </div>
+                    <div class="email-body">
+                        <p>Enhanced hallway footage analyzed. Despite image degradation, the suspect's upper garment is confirmed: <span class="highlight">🟢 Green Shirt</span>. Update your filter.</p>
+                    </div>
+                </div>
+
+                <div class="email clue" data-tracker="ct-vehicle-brand">
+                    <div class="email-header-bar">
+                        <span class="email-classification">CLUE</span>
+                        <div class="email-meta">
+                            <span class="email-from">FROM: CSI Lab — Trace Evidence &lt;trace@fcid.gov&gt;</span>
+                            <span class="email-subject">SUBJECT: Tire Tread Analysis — Alleyway</span>
+                        </div>
+                        <span class="email-timestamp" data-ts></span>
+                    </div>
+                    <div class="email-body">
+                        <p>Tire tread impressions recovered from the alley behind Aegis Corp. Pattern cross-referenced with manufacturer database: confirms vehicle brand is <span class="highlight">🚗 Ford</span>.</p>
+                    </div>
+                </div>
+
+                <div class="email clue" data-tracker="ct-height">
+                    <div class="email-header-bar">
+                        <span class="email-classification">CLUE</span>
+                        <div class="email-meta">
+                            <span class="email-from">FROM: CSI Lab — Biometrics &lt;biometrics@fcid.gov&gt;</span>
+                            <span class="email-subject">SUBJECT: Laser Sensor Breach — Height Calculation</span>
+                        </div>
+                        <span class="email-timestamp" data-ts></span>
+                    </div>
+                    <div class="email-body">
+                        <p>Vault entry point equipped with laser tripwire sensors. Breach angle trigonometry calculates perpetrator height as strictly greater than <span class="highlight">📐 160 cm</span>. Filter Height &gt; 160.</p>
+                    </div>
+                </div>
+
+                <div class="email clue" data-tracker="ct-hair">
+                    <div class="email-header-bar">
+                        <span class="email-classification">CLUE</span>
+                        <div class="email-meta">
+                            <span class="email-from">FROM: CSI Lab — Genetics &lt;genetics@fcid.gov&gt;</span>
+                            <span class="email-subject">SUBJECT: DNA Hair Trace — Vault Door Frame</span>
+                        </div>
+                        <span class="email-timestamp" data-ts></span>
+                    </div>
+                    <div class="email-body">
+                        <p>Biological sample recovered: hair follicle snagged on vault door frame. Full DNA analysis complete. Suspect hair colour: <span class="highlight">🟤 Brown</span>.</p>
+                    </div>
+                </div>
+
+                <div class="email clue" data-tracker="ct-blood">
+                    <div class="email-header-bar">
+                        <span class="email-classification">CLUE</span>
+                        <div class="email-meta">
+                            <span class="email-from">FROM: CSI Lab — Serology &lt;serology@fcid.gov&gt;</span>
+                            <span class="email-subject">SUBJECT: Blood Type Confirmation</span>
+                        </div>
+                        <span class="email-timestamp" data-ts></span>
+                    </div>
+                    <div class="email-body">
+                        <p>Suspect lacerated their hand on broken display glass. Blood recovered and typed. Result: <span class="highlight">🩸 Type AB</span>. Rare blood group — significantly narrows suspect pool.</p>
+                    </div>
+                </div>
+
+                <div class="email clue" data-tracker="ct-rh">
+                    <div class="email-header-bar">
+                        <span class="email-classification">CLUE</span>
+                        <div class="email-meta">
+                            <span class="email-from">FROM: CSI Lab — Serology &lt;serology@fcid.gov&gt;</span>
+                            <span class="email-subject">SUBJECT: Rh Factor Supplement</span>
+                        </div>
+                        <span class="email-timestamp" data-ts></span>
+                    </div>
+                    <div class="email-body">
+                        <p>Follow-up to previous blood analysis. Extended serology confirms Rh factor: <span class="highlight">➖ Negative (−)</span>. Update database filter: Blood Type = AB−.</p>
+                    </div>
+                </div>
+
+                <div class="email clue" data-tracker="ct-plate">
+                    <div class="email-header-bar">
+                        <span class="email-classification">CLUE</span>
+                        <div class="email-meta">
+                            <span class="email-from">FROM: Inspector Ramirez &lt;ramirez@fcid.gov&gt;</span>
+                            <span class="email-subject">SUBJECT: License Plate — AI Enhancement</span>
+                        </div>
+                        <span class="email-timestamp" data-ts></span>
+                    </div>
+                    <div class="email-body">
+                        <p>Traffic cam footage processed through AI upscaling. Plate remains partially obscured, but sequence confirmed: plate contains digits <span class="highlight">78</span> in that exact order. Apply "Contains 78" filter to License Plate column.</p>
+                    </div>
+                </div>
+
+                <div class="email clue" data-tracker="ct-eyes">
+                    <div class="email-header-bar">
+                        <span class="email-classification">CLUE</span>
+                        <div class="email-meta">
+                            <span class="email-from">FROM: Inspector Chen &lt;chen@fcid.gov&gt;</span>
+                            <span class="email-subject">SUBJECT: Barista Witness — Eye Colour</span>
+                        </div>
+                        <span class="email-timestamp" data-ts></span>
+                    </div>
+                    <div class="email-body">
+                        <p>Follow-up interview with coffee shop witness who interacted with suspect pre-heist. Additional recalled detail confirmed: suspect's eye colour is <span class="highlight">🟢 Green</span>.</p>
+                    </div>
+                </div>
+
+                <div class="email clue" data-tracker="ct-tattoo">
+                    <div class="email-header-bar">
+                        <span class="email-classification">CLUE</span>
+                        <div class="email-meta">
+                            <span class="email-from">FROM: Inspector Costa &lt;costa@fcid.gov&gt;</span>
+                            <span class="email-subject">SUBJECT: Camera 2 — Tattoo Identification</span>
+                        </div>
+                        <span class="email-timestamp" data-ts></span>
+                    </div>
+                    <div class="email-body">
+                        <p>Isolated wrist-level shot from Camera 2, frame 847. Distinguishing mark confirmed: suspect bears a <span class="highlight">🐍 Snake</span> tattoo on wrist. Cross-reference with database.</p>
+                    </div>
+                </div>
+
+                <div class="email clue" data-tracker="ct-footprint">
+                    <div class="email-header-bar">
+                        <span class="email-classification">CLUE</span>
+                        <div class="email-meta">
+                            <span class="email-from">FROM: CSI Lab — Forensics &lt;forensics@fcid.gov&gt;</span>
+                            <span class="email-subject">SUBJECT: FINAL CLUE — Footprint Plaster Casts</span>
+                        </div>
+                        <span class="email-timestamp" data-ts></span>
+                    </div>
+                    <div class="email-body">
+                        <p>Plaster casts of muddy footprints outside service exit analysed. Footwear type: <span class="highlight">👢 Boot</span>. Shoe size strictly greater than <span class="highlight">Size 40</span>.</p>
+                        <p style="margin-top:12px; color: var(--gold-light); font-family: var(--mono); font-size:13px;">⚑ ALL EVIDENCE TRANSMITTED. If your filters are correct, exactly ONE suspect remains. Proceed to FILE ARREST WARRANT.</p>
+                    </div>
+                </div>
+
+            </div><!-- /inbox -->
+        </div><!-- /feed-area -->
+    </div><!-- /workspace -->
+
+
+    <!-- ══════════════ WARRANT MODAL ══════════════ -->
     <div id="warrantModal" class="modal">
-        <div class="modal-content">
-            <div class="email-draft-header">
-                TO: <span>SWAT Team Alpha</span><br>
-                CC: <span>Lead Inspector Silva</span><br>
-                SUBJECT: <span>TARGET IDENTIFICATION - ARREST WARRANT</span>
+        <div class="modal-box">
+            <div class="modal-header">
+                <span class="modal-icon">⚑</span>
+                <span class="modal-title">Arrest Warrant — Secure Transmission</span>
             </div>
-            <p>We have processed the evidence. Dispatch strike team immediately to apprehend the following suspect:</p>
-            <input type="text" id="suspectNameInput" placeholder="Enter Suspect's Full Name..." autocomplete="off">
-            <div style="display: flex; justify-content: space-between;">
-                <button onclick="closeWarrant()" style="background-color: transparent; border: 1px solid #ffaa00; color: #ffaa00;">Cancel Draft</button>
-                <button onclick="submitWarrant()">SEND SECURE EMAIL</button>
+            <div class="modal-body">
+                <div class="draft-meta">
+                    <div class="draft-row"><span class="dr-key">TO:</span><span class="dr-val">SWAT Team Alpha — Dispatch Command</span></div>
+                    <div class="draft-row"><span class="dr-key">CC:</span><span class="dr-val">Lead Inspector Silva; Division Commander</span></div>
+                    <div class="draft-row"><span class="dr-key">CASE:</span><span class="dr-val">FC-2024-0817 / AEGIS CORP HEIST</span></div>
+                    <div class="draft-row"><span class="dr-key">AUTH:</span><span class="dr-val">TECH-UNIT-04 · CONFIDENTIAL</span></div>
+                </div>
+                <p>We have processed all forensic evidence. Dispatch strike team immediately to apprehend the following individual:</p>
+                <div class="input-group">
+                    <label class="input-label" for="suspectNameInput">Suspect Full Name (as it appears in database)</label>
+                    <input type="text" id="suspectNameInput" placeholder="e.g. JOHN DOE" autocomplete="off">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-ghost" onclick="closeWarrant()">✕ CANCEL DRAFT</button>
+                <button class="btn-send" onclick="submitWarrant()">⚑ SEND SECURE WARRANT</button>
             </div>
         </div>
     </div>
 
+    <!-- ══════════════ ERROR MODAL ══════════════ -->
     <div id="errorModal" class="modal">
-        <div class="modal-content error">
-            <h1 style="color: #ff0000; margin-top: 0;">❌ ARREST FAILED</h1>
-            <p style="color: #ffaa00;">SWAT Team Alpha breached the location, but the suspect you identified is innocent.</p>
-            <p style="color: #ffaa00;">The real culprit is still out there with the prototype! Double-check your Excel filters, clear any mistakes, and try again!</p>
-            <button onclick="closeError()" style="background-color: #550000; color: #ff0000; margin-top: 20px; border: 1px solid #ff0000;">Return to Console</button>
+        <div class="modal-box danger">
+            <div class="error-content">
+                <div class="error-code">❌</div>
+                <div class="error-title">Arrest Failed — Wrong Suspect</div>
+                <p>SWAT Team Alpha breached the location. The individual you identified is <strong>innocent</strong>.</p>
+                <p>The real culprit is still at large with the stolen prototype. Return to your database, review your Excel filters carefully, and re-submit when you have isolated the correct suspect.</p>
+                <button class="btn-return" onclick="closeError()">↩ RETURN TO CONSOLE</button>
+            </div>
         </div>
     </div>
 
+    <!-- ══════════════ SUCCESS MODAL ══════════════ -->
     <div id="successModal" class="modal">
-        <div class="modal-content success">
-            <h1 style="color: #00ff00; margin-top: 0;">✅ ARREST SUCCESSFUL</h1>
-            <h2 style="color: #ffffff;">TARGET SECURED: VALERIE BLAKE</h2>
-            <p>Outstanding work, Tech Unit! SWAT Team Alpha apprehended the suspect just as she was trying to leave the city with the stolen tech.</p>
-            <p>The Aegis Corp prototype has been recovered safely. Your forensic data analysis was flawless.</p>
-            <h3 style="color: #ffaa00; margin-top: 30px;">[ CASE CLOSED ]</h3>
-            <p>Excellent work, Techs. You are cleared to log off.</p>
+        <div class="modal-box success-modal">
+            <div class="success-content">
+                <div class="success-badge-icon">🏅</div>
+                <div class="success-case-closed">✔ CASE CLOSED — SUSPECT SECURED</div>
+                <div class="success-name">VALERIE BLAKE</div>
+                <p>Outstanding work, Tech Unit. SWAT Team Alpha apprehended the suspect at the city perimeter as she attempted to flee with the stolen device.</p>
+                <p>The Aegis Corp prototype has been recovered intact. Your forensic data filtering was flawless.</p>
+                <div class="commendation">
+                    [ COMMENDATION ISSUED — TECH-UNIT-04 ]<br>
+                    FORENSIC DATA ANALYSIS: EXEMPLARY
+                </div>
+            </div>
         </div>
     </div>
+
 
     <script>
+        // ── CLOCK ──
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').textContent =
+                now.toTimeString().slice(0,8);
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // ── STATE ──
         let currentClue = 0;
         const clues = document.querySelectorAll('.clue');
-        const statusDiv = document.getElementById('status');
+        const statusText = document.getElementById('statusText');
+        const statusDot = document.getElementById('statusDot');
         const btn = document.getElementById('startBtn');
         const intro = document.getElementById('introEmail');
-        
+        const feedCount = document.getElementById('feedCount');
+        const packetCount = document.getElementById('packetCount');
+
         let nextClueTime = 0;
         let nextChatterTime = 0;
         let isAlerting = false;
+        let totalReceived = 1; // intro counts
+
+        const timestamps = [];
+        function getTimestamp() {
+            const now = new Date();
+            return now.toTimeString().slice(0,8) + ' LOCAL';
+        }
 
         const chatterMessages = [
-            "Intercepting encrypted radio frequencies...",
-            "CSI Lab is analyzing blood samples...",
-            "Traffic patrols are heading to the A45 highway...",
-            "Cross-referencing fingerprint database...",
-            "Helicopter Unit 3 is scanning the warehouse district...",
-            "Running facial recognition on ATM cameras...",
-            "Decrypting burner phone logs...",
-            "SWAT team is on standby...",
-            "Forensics team is dusting the vault room...",
-            "Awaiting warrant approval from the judge...",
-            "Enhancing blurry CCTV street footage...",
-            "Reviewing toll booth license plate scanners..."
+            "Intercepting encrypted radio frequencies on band 7...",
+            "CSI Lab processing blood sample batch 3...",
+            "Traffic patrols converging on A45 highway corridor...",
+            "Cross-referencing fingerprint database — 0 hits so far...",
+            "Helicopter Unit 3 scanning warehouse district...",
+            "Running facial recognition on ATM camera grid...",
+            "Decrypting recovered burner phone logs...",
+            "SWAT Team Alpha holding at staging area...",
+            "Forensics dusting vault room for latent prints...",
+            "Awaiting digital warrant signature from Judge Torres...",
+            "AI upscaling CCTV street footage — Frame 847...",
+            "Toll booth license plate scanner cross-reference running...",
+            "Secure channel integrity check: PASS",
+            "Refreshing cell tower triangulation data...",
         ];
 
         function playPing() {
             try {
-                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                osc.type = 'sine'; 
-                osc.frequency.setValueAtTime(950, audioCtx.currentTime); 
-                gain.gain.setValueAtTime(0.2, audioCtx.currentTime); 
-                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4); 
-                osc.connect(gain); gain.connect(audioCtx.destination);
-                osc.start(); osc.stop(audioCtx.currentTime + 0.5);
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(880, ctx.currentTime);
+                osc.frequency.setValueAtTime(1100, ctx.currentTime + 0.05);
+                gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
+                osc.connect(gain); gain.connect(ctx.destination);
+                osc.start(); osc.stop(ctx.currentTime + 0.6);
             } catch(e) {}
         }
 
         function playErrorSound() {
             try {
-                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                osc.type = 'sawtooth'; 
-                osc.frequency.setValueAtTime(150, audioCtx.currentTime); 
-                gain.gain.setValueAtTime(0.3, audioCtx.currentTime); 
-                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.6); 
-                osc.connect(gain); gain.connect(audioCtx.destination);
-                osc.start(); osc.stop(audioCtx.currentTime + 0.7);
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(140, ctx.currentTime);
+                gain.gain.setValueAtTime(0.2, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
+                osc.connect(gain); gain.connect(ctx.destination);
+                osc.start(); osc.stop(ctx.currentTime + 0.9);
             } catch(e) {}
         }
 
         function openWarrant() {
-            document.getElementById('warrantModal').style.display = 'block';
+            document.getElementById('warrantModal').classList.add('open');
             document.getElementById('suspectNameInput').focus();
         }
-
         function closeWarrant() {
-            document.getElementById('warrantModal').style.display = 'none';
-            document.getElementById('suspectNameInput').value = ""; 
+            document.getElementById('warrantModal').classList.remove('open');
+            document.getElementById('suspectNameInput').value = '';
         }
-
         function closeError() {
-            document.getElementById('errorModal').style.display = 'none';
+            document.getElementById('errorModal').classList.remove('open');
         }
 
         function submitWarrant() {
             const input = document.getElementById('suspectNameInput').value.trim().toLowerCase();
-            
             if (input.includes("valerie") && input.includes("blake")) {
                 closeWarrant();
-                document.getElementById('successModal').style.display = 'block';
+                document.getElementById('successModal').classList.add('open');
                 playPing();
-                setTimeout(playPing, 200); 
-                
-                nextClueTime = 0;
-                nextChatterTime = 0;
+                setTimeout(playPing, 250);
+                nextClueTime = 0; nextChatterTime = 0;
             } else {
                 closeWarrant();
-                document.getElementById('errorModal').style.display = 'block';
+                document.getElementById('errorModal').classList.add('open');
                 playErrorSound();
             }
         }
 
-        document.getElementById("suspectNameInput").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                submitWarrant();
-            }
+        document.getElementById("suspectNameInput").addEventListener("keypress", e => {
+            if (e.key === "Enter") { e.preventDefault(); submitWarrant(); }
         });
 
         function updateChatter() {
-            const randomMsg = chatterMessages[Math.floor(Math.random() * chatterMessages.length)];
-            statusDiv.innerText = `>> SYSTEM STATUS: ${randomMsg}`;
+            const msg = chatterMessages[Math.floor(Math.random() * chatterMessages.length)];
+            statusText.textContent = `>> ${msg}`;
+            statusText.classList.remove('alert');
         }
 
         function getRandomTime() {
-            // *** TEACHER TESTING TIP ***
-            // Change '2' to '0', and the '2' below to '2', then '* 60000' to '* 1000' to test in seconds!
-            const randomMinutes = Math.floor(Math.random() * 2) + 2; 
-            return randomMinutes * 60000; 
+            // TEACHER TIP: change to * 1000 and values 1,2 for second-based testing
+            const mins = Math.floor(Math.random() * 2) + 2;
+            return mins * 60000;
         }
 
         function queueNextClue() {
-            if (currentClue < clues.length) {
-                nextClueTime = Date.now() + getRandomTime();
-            } else {
-                nextClueTime = 0; 
-            }
+            if (currentClue < clues.length) nextClueTime = Date.now() + getRandomTime();
+            else nextClueTime = 0;
+        }
+
+        function updateFeedCount() {
+            feedCount.textContent = `${totalReceived} / 15 packets received`;
+            packetCount.textContent = totalReceived;
         }
 
         function deliverClue() {
-            playPing(); 
+            playPing();
+
+            // Timestamp
+            const tsEl = clues[currentClue].querySelector('[data-ts]');
+            if (tsEl) tsEl.textContent = getTimestamp();
+
             clues[currentClue].style.display = 'block';
+
+            // Sidebar tracker
+            const trackerKey = clues[currentClue].dataset.tracker;
+            if (trackerKey) {
+                const trackerEl = document.getElementById(trackerKey);
+                if (trackerEl) trackerEl.classList.add('received');
+            }
+
             currentClue++;
-            
+            totalReceived++;
+            updateFeedCount();
+
             isAlerting = true;
-            statusDiv.innerText = ">> SYSTEM STATUS: *** NEW ENCRYPTED PACKET RECEIVED ***";
-            statusDiv.style.color = "#ffffff";
-            
-            if(currentClue === clues.length) {
-                statusDiv.innerText = ">> SYSTEM STATUS: All data transmitted. Submit Arrest Warrant!";
-                statusDiv.style.color = "#00ff00";
-                nextClueTime = 0; 
-                nextChatterTime = 0; 
+            statusText.textContent = '>> ⚠ INCOMING ENCRYPTED PACKET — NEW FORENSIC DATA RECEIVED';
+            statusText.classList.add('alert');
+            statusDot.classList.remove('idle');
+
+            if (currentClue === clues.length) {
+                setTimeout(() => {
+                    statusText.textContent = '>> ALL FORENSIC DATA TRANSMITTED — SUBMIT ARREST WARRANT TO CLOSE CASE';
+                    statusText.classList.remove('alert');
+                }, 3000);
+                nextClueTime = 0; nextChatterTime = 0;
             } else {
                 setTimeout(() => {
                     isAlerting = false;
-                    statusDiv.style.color = "#ffaa00";
+                    statusText.classList.remove('alert');
                     updateChatter();
-                    nextChatterTime = Date.now() + 6000;
+                    nextChatterTime = Date.now() + 7000;
                     queueNextClue();
-                }, 3000); 
+                }, 3000);
             }
         }
 
         function startInvestigation() {
             btn.disabled = true;
-            intro.style.display = 'block'; 
-            
+            intro.style.display = 'block';
+            statusDot.classList.remove('idle');
+            document.getElementById('uplinkStatus').textContent = 'ACTIVE';
+            document.getElementById('uplinkStatus').style.color = 'var(--green-ok)';
+
             updateChatter();
-            nextChatterTime = Date.now() + 6000;
-            
-            // Set the timer for the very first clue to exactly 1 minute (60000 ms)
-            // *** TEACHER TESTING TIP *** Change 60000 to 1000 to test in 1 second!
+            nextChatterTime = Date.now() + 7000;
+
+            // First clue at 60 seconds  —  TEACHER TIP: change 60000 to 1000 to test in 1s
             nextClueTime = Date.now() + 60000;
 
             setInterval(() => {
-                let now = Date.now();
-                if (nextClueTime > 0 && now >= nextClueTime && !isAlerting) {
-                    deliverClue();
-                }
+                const now = Date.now();
+                if (nextClueTime > 0 && now >= nextClueTime && !isAlerting) deliverClue();
                 if (nextChatterTime > 0 && now >= nextChatterTime && !isAlerting) {
                     updateChatter();
-                    nextChatterTime = now + 6000;
+                    nextChatterTime = now + 7000;
                 }
             }, 1000);
         }
