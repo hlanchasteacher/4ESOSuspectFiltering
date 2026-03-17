@@ -24,6 +24,10 @@
             margin: 0;
             letter-spacing: 1px;
         }
+        .btn-group {
+            display: flex;
+            gap: 15px;
+        }
         button {
             background-color: #00ff00;
             color: #0a0a0a;
@@ -34,6 +38,7 @@
             cursor: pointer;
             font-family: inherit;
             transition: background-color 0.3s;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
         }
         button:hover {
             background-color: #00cc00;
@@ -43,6 +48,12 @@
             color: #555;
             cursor: not-allowed;
             display: none;
+        }
+        .arrest-btn {
+            background-color: #ffaa00;
+        }
+        .arrest-btn:hover {
+            background-color: #cc8800;
         }
         .inbox {
             display: flex;
@@ -74,13 +85,54 @@
             text-shadow: 0 0 5px rgba(255, 170, 0, 0.5);
             min-height: 1.5em; 
         }
+
+        /* --- MODAL (POPUP) STYLES --- */
+        .modal {
+            display: none; 
+            position: fixed; z-index: 100; left: 0; top: 0;
+            width: 100%; height: 100%; overflow: auto;
+            background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background-color: #121212;
+            margin: 10% auto;
+            padding: 40px;
+            border: 2px solid #00ff00;
+            width: 50%;
+            max-width: 600px;
+            box-shadow: 0 0 30px rgba(0,255,0,0.3);
+        }
+        .modal-content.error {
+            border-color: #ff0000;
+            box-shadow: 0 0 30px rgba(255,0,0,0.3);
+            text-align: center;
+        }
+        .modal-content.success {
+            border-color: #00ff00;
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 90%; padding: 12px; margin-top: 15px; margin-bottom: 25px;
+            background-color: #0a0a0a; color: #00ff00;
+            border: 1px solid #00ff00; font-family: inherit; font-size: 1.2em;
+            text-transform: uppercase;
+        }
+        input[type="text"]:focus {
+            outline: none; box-shadow: 0 0 10px rgba(0,255,0,0.5);
+        }
+        .email-draft-header { color: #888; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px;}
+        .email-draft-header span { color: #fff; }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <h2>🔒 DEPARTAMENTO DE CIBERCRIMEN - CONSOLA TÉCNICA</h2>
-        <button onclick="startInvestigation()" id="startBtn">Initiate Server Uplink</button>
+        <h2>🔒 CIBERCRIMEN - CONSOLA TÉCNICA</h2>
+        <div class="btn-group">
+            <button onclick="startInvestigation()" id="startBtn">Initiate Server Uplink</button>
+            <button onclick="openWarrant()" class="arrest-btn" id="arrestBtn">FILE ARREST WARRANT</button>
+        </div>
     </div>
     
     <div id="status">>> SYSTEM IDLE. Waiting for Tech Unit to initiate uplink...</div>
@@ -159,7 +211,43 @@
 
         <div class="email clue">
             <div class="email-header">FROM: <span class="sender">CSI Lab - Forensics</span> | SUBJECT: Final Clue - Footprints</div>
-            <p>Plaster casts of the muddy footprints confirm the suspect was wearing a <span class="highlight">Boot</span>, and their shoe size is strictly greater than <span class="highlight">40</span>. Techs, if you processed the data correctly, you should only have ONE suspect left. Send us a name so we can make the arrest!</p>
+            <p>Plaster casts of the muddy footprints confirm the suspect was wearing a <span class="highlight">Boot</span>, and their shoe size is strictly greater than <span class="highlight">40</span>. Techs, if you processed the data correctly, you should only have ONE suspect left. Click 'FILE ARREST WARRANT' to send SWAT!</p>
+        </div>
+    </div>
+
+    <div id="warrantModal" class="modal">
+        <div class="modal-content">
+            <div class="email-draft-header">
+                TO: <span>SWAT Team Alpha</span><br>
+                CC: <span>Lead Inspector Silva</span><br>
+                SUBJECT: <span>TARGET IDENTIFICATION - ARREST WARRANT</span>
+            </div>
+            <p>We have processed the evidence. Dispatch strike team immediately to apprehend the following suspect:</p>
+            <input type="text" id="suspectNameInput" placeholder="Enter Suspect's Full Name..." autocomplete="off">
+            <div style="display: flex; justify-content: space-between;">
+                <button onclick="closeWarrant()" style="background-color: transparent; border: 1px solid #ffaa00; color: #ffaa00;">Cancel Draft</button>
+                <button onclick="submitWarrant()">SEND SECURE EMAIL</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="errorModal" class="modal">
+        <div class="modal-content error">
+            <h1 style="color: #ff0000; margin-top: 0;">❌ ARREST FAILED</h1>
+            <p style="color: #ffaa00;">SWAT Team Alpha breached the location, but the suspect you identified is innocent.</p>
+            <p style="color: #ffaa00;">The real culprit is still out there! Double-check your Excel filters, clear any mistakes, and try again!</p>
+            <button onclick="closeError()" style="background-color: #550000; color: #ff0000; margin-top: 20px; border: 1px solid #ff0000;">Return to Console</button>
+        </div>
+    </div>
+
+    <div id="successModal" class="modal">
+        <div class="modal-content success">
+            <h1 style="color: #00ff00; margin-top: 0;">✅ ARREST SUCCESSFUL</h1>
+            <h2 style="color: #ffffff;">TARGET SECURED: VALERIE BLAKE</h2>
+            <p>Outstanding work, Tech Unit! SWAT Team Alpha apprehended the suspect just as she was trying to leave the city.</p>
+            <p>The school's master hard drive has been recovered safely, and the data is intact. Your forensic analysis was flawless.</p>
+            <h3 style="color: #ffaa00; margin-top: 30px;">[ ESCAPE ROOM COMPLETED ]</h3>
+            <p>Congratulations, Detectives. You may now close your consoles.</p>
         </div>
     </div>
 
@@ -189,28 +277,80 @@
             "Reviewing toll booth license plate scanners..."
         ];
 
+        // --- AUDIO FUNCTIONS ---
         function playPing() {
             try {
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
-                
                 osc.type = 'sine'; 
                 osc.frequency.setValueAtTime(950, audioCtx.currentTime); 
-                
                 gain.gain.setValueAtTime(0.2, audioCtx.currentTime); 
                 gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4); 
+                osc.connect(gain); gain.connect(audioCtx.destination);
+                osc.start(); osc.stop(audioCtx.currentTime + 0.5);
+            } catch(e) {}
+        }
+
+        function playErrorSound() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sawtooth'; 
+                osc.frequency.setValueAtTime(150, audioCtx.currentTime); 
+                gain.gain.setValueAtTime(0.3, audioCtx.currentTime); 
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.6); 
+                osc.connect(gain); gain.connect(audioCtx.destination);
+                osc.start(); osc.stop(audioCtx.currentTime + 0.7);
+            } catch(e) {}
+        }
+
+        // --- MODAL FUNCTIONS ---
+        function openWarrant() {
+            document.getElementById('warrantModal').style.display = 'block';
+            document.getElementById('suspectNameInput').focus();
+        }
+
+        function closeWarrant() {
+            document.getElementById('warrantModal').style.display = 'none';
+            document.getElementById('suspectNameInput').value = ""; // clear input
+        }
+
+        function closeError() {
+            document.getElementById('errorModal').style.display = 'none';
+        }
+
+        function submitWarrant() {
+            // Get the value, convert to lowercase, and remove extra spaces
+            const input = document.getElementById('suspectNameInput').value.trim().toLowerCase();
+            
+            // Allow for minor typos or inverted names (e.g. "Blake, Valerie")
+            if (input.includes("valerie") && input.includes("blake")) {
+                closeWarrant();
+                document.getElementById('successModal').style.display = 'block';
+                playPing();
+                setTimeout(playPing, 200); // Double ping for success
                 
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.5);
-            } catch(e) {
-                console.log("Audio API blocked or not supported.");
+                // Stop the game timer/chatter
+                nextClueTime = 0;
+                nextChatterTime = 0;
+            } else {
+                closeWarrant();
+                document.getElementById('errorModal').style.display = 'block';
+                playErrorSound();
             }
         }
 
+        // Allow pressing "Enter" to submit the email
+        document.getElementById("suspectNameInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                submitWarrant();
+            }
+        });
+
+        // --- CORE GAME ENGINE ---
         function updateChatter() {
             const randomMsg = chatterMessages[Math.floor(Math.random() * chatterMessages.length)];
             statusDiv.innerText = `>> SYSTEM STATUS: ${randomMsg}`;
@@ -220,15 +360,14 @@
             // *** TEACHER TESTING TIP ***
             // Change '2' to '0', and the '2' below to '2', then '* 60000' to '* 1000' to test in seconds!
             const randomMinutes = Math.floor(Math.random() * 2) + 2; 
-            return randomMinutes * 60000; // Returns time in milliseconds
+            return randomMinutes * 60000; 
         }
 
         function queueNextClue() {
             if (currentClue < clues.length) {
-                // Set the exact future time on the system clock for the next clue
                 nextClueTime = Date.now() + getRandomTime();
             } else {
-                nextClueTime = 0; // No more clues
+                nextClueTime = 0; 
             }
         }
 
@@ -242,12 +381,11 @@
             statusDiv.style.color = "#ffffff";
             
             if(currentClue === clues.length) {
-                statusDiv.innerText = ">> SYSTEM STATUS: All data transmitted. Identify the culprit!";
+                statusDiv.innerText = ">> SYSTEM STATUS: All data transmitted. Submit Arrest Warrant!";
                 statusDiv.style.color = "#00ff00";
                 nextClueTime = 0; 
                 nextChatterTime = 0; 
             } else {
-                // Keep the alert up for 3 seconds, then resume normal chatter
                 setTimeout(() => {
                     isAlerting = false;
                     statusDiv.style.color = "#ffaa00";
@@ -262,27 +400,19 @@
             btn.disabled = true;
             intro.style.display = 'block'; 
             
-            // Deliver the very first clue immediately
             playPing();
             clues[currentClue].style.display = 'block';
             currentClue++;
             
             updateChatter();
-            
-            // Set initial timestamps
             nextChatterTime = Date.now() + 6000;
             queueNextClue();
 
-            // The Master Clock Loop: Checks the actual time every second
             setInterval(() => {
                 let now = Date.now();
-                
-                // Check if it's time for a new clue
                 if (nextClueTime > 0 && now >= nextClueTime && !isAlerting) {
                     deliverClue();
                 }
-                
-                // Check if it's time to change the random chatter
                 if (nextChatterTime > 0 && now >= nextChatterTime && !isAlerting) {
                     updateChatter();
                     nextChatterTime = now + 6000;
