@@ -55,6 +55,21 @@
         .arrest-btn:hover {
             background-color: #cc8800;
         }
+        .download-btn {
+            background-color: #0088ff;
+            color: #ffffff;
+            margin-top: 15px;
+            display: inline-block;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-weight: bold;
+            border: 1px solid #00aaff;
+            box-shadow: 0 0 10px rgba(0, 136, 255, 0.3);
+        }
+        .download-btn:hover {
+            background-color: #00aaff;
+            color: #0a0a0a;
+        }
         .inbox {
             display: flex;
             flex-direction: column-reverse; 
@@ -140,13 +155,15 @@
     <div class="inbox" id="emailContainer">
         
         <div class="email" id="introEmail">
-            <div class="email-header">FROM: <span class="sender">Lead Inspector Silva</span> | SUBJECT: URGENT: The Server Heist</div>
-            <p>Tech Unit, we have a crisis. The master server hard drive was stolen. Field inspectors and the CSI lab are gathering evidence now. You have access to the city's 1,000-person suspect database. Process the incoming data to identify the culprit. The first piece of evidence is attached.</p>
+            <div class="email-header">FROM: <span class="sender">Lead Inspector Silva</span> | SUBJECT: URGENT: The Aegis Corp Heist</div>
+            <p>Tech Unit, we have a corporate espionage crisis. Last night, a highly classified prototype was stolen from the Aegis Corp R&D vault. Field inspectors and the CSI lab are gathering evidence now.</p>
+            <p>You have access to the city's 1,000-person suspect database. Download the encrypted file below and process the incoming data to identify the culprit.</p>
+            <a href="suspect_database.xlsx" download="suspect_database.xlsx" class="download-btn">📥 DOWNLOAD SUSPECT DATABASE</a>
         </div>
 
         <div class="email clue">
             <div class="email-header">FROM: <span class="sender">Inspector Ramirez</span> | SUBJECT: Vehicle Color Update</div>
-            <p>Techs, I'm reviewing the street cams. The getaway car is either <span class="highlight">Black</span> or <span class="highlight">Silver</span>.</p>
+            <p>Techs, I'm reviewing the street cams outside Aegis Corp. The getaway car is either <span class="highlight">Black</span> or <span class="highlight">Silver</span>.</p>
         </div>
 
         <div class="email clue">
@@ -156,12 +173,12 @@
 
         <div class="email clue">
             <div class="email-header">FROM: <span class="sender">Inspector Costa</span> | SUBJECT: Age Estimate</div>
-            <p>Just interviewed a witness who got a good look at the suspect running away. They are absolutely certain the perp is older than <span class="highlight">25</span> years old.</p>
+            <p>Just interviewed a witness who got a good look at the suspect running from the loading dock. They are absolutely certain the perp is older than <span class="highlight">25</span> years old.</p>
         </div>
 
         <div class="email clue">
             <div class="email-header">FROM: <span class="sender">CSI Lab - Forensics</span> | SUBJECT: Handedness</div>
-            <p>The lock to the server room was picked. The angle of the scratch marks confirms the perp is <span class="highlight">Left-handed</span>.</p>
+            <p>The lock to the R&D vault was picked. The angle of the scratch marks confirms the perp is <span class="highlight">Left-handed</span>.</p>
         </div>
 
         <div class="email clue">
@@ -176,17 +193,17 @@
 
         <div class="email clue">
             <div class="email-header">FROM: <span class="sender">CSI Lab - Biometrics</span> | SUBJECT: Height Measurement</div>
-            <p>The suspect tripped the laser doorway sensors. Based on the angle, we calculate their height is strictly greater than <span class="highlight">160 cm</span>.</p>
+            <p>The suspect tripped the laser doorway sensors in the vault. Based on the angle, we calculate their height is strictly greater than <span class="highlight">160 cm</span>.</p>
         </div>
 
         <div class="email clue">
             <div class="email-header">FROM: <span class="sender">CSI Lab - Genetics</span> | SUBJECT: Hair DNA Trace</div>
-            <p>We found a hair snagged on the server rack. DNA confirms the suspect has <span class="highlight">Brown</span> hair.</p>
+            <p>We found a hair snagged on the vault door. DNA confirms the suspect has <span class="highlight">Brown</span> hair.</p>
         </div>
 
         <div class="email clue">
             <div class="email-header">FROM: <span class="sender">CSI Lab - Serology</span> | SUBJECT: Blood Type</div>
-            <p>The suspect cut themselves on the broken glass. Blood type is very rare: Type <span class="highlight">AB</span>.</p>
+            <p>The suspect cut themselves on the broken display glass. Blood type is very rare: Type <span class="highlight">AB</span>.</p>
         </div>
 
         <div class="email clue">
@@ -235,7 +252,7 @@
         <div class="modal-content error">
             <h1 style="color: #ff0000; margin-top: 0;">❌ ARREST FAILED</h1>
             <p style="color: #ffaa00;">SWAT Team Alpha breached the location, but the suspect you identified is innocent.</p>
-            <p style="color: #ffaa00;">The real culprit is still out there! Double-check your Excel filters, clear any mistakes, and try again!</p>
+            <p style="color: #ffaa00;">The real culprit is still out there with the prototype! Double-check your Excel filters, clear any mistakes, and try again!</p>
             <button onclick="closeError()" style="background-color: #550000; color: #ff0000; margin-top: 20px; border: 1px solid #ff0000;">Return to Console</button>
         </div>
     </div>
@@ -244,8 +261,8 @@
         <div class="modal-content success">
             <h1 style="color: #00ff00; margin-top: 0;">✅ ARREST SUCCESSFUL</h1>
             <h2 style="color: #ffffff;">TARGET SECURED: VALERIE BLAKE</h2>
-            <p>Outstanding work, Tech Unit! SWAT Team Alpha apprehended the suspect just as she was trying to leave the city.</p>
-            <p>The school's master hard drive has been recovered safely, and the data is intact. Your forensic analysis was flawless.</p>
+            <p>Outstanding work, Tech Unit! SWAT Team Alpha apprehended the suspect just as she was trying to leave the city with the stolen tech.</p>
+            <p>The Aegis Corp prototype has been recovered safely. Your forensic data analysis was flawless.</p>
             <h3 style="color: #ffaa00; margin-top: 30px;">[ CASE CLOSED ]</h3>
             <p>Excellent work, Techs. You are cleared to log off.</p>
         </div>
@@ -271,7 +288,7 @@
             "Running facial recognition on ATM cameras...",
             "Decrypting burner phone logs...",
             "SWAT team is on standby...",
-            "Forensics team is dusting the server racks...",
+            "Forensics team is dusting the vault room...",
             "Awaiting warrant approval from the judge...",
             "Enhancing blurry CCTV street footage...",
             "Reviewing toll booth license plate scanners..."
