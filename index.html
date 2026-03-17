@@ -72,6 +72,7 @@
             margin-bottom: 25px; 
             font-size: 1.2em;
             text-shadow: 0 0 5px rgba(255, 170, 0, 0.5);
+            min-height: 1.5em; 
         }
     </style>
 </head>
@@ -82,7 +83,7 @@
         <button onclick="startInvestigation()" id="startBtn">Initiate Server Uplink</button>
     </div>
     
-    <div id="status">System idle. Waiting for Tech Unit to initiate uplink...</div>
+    <div id="status">>> SYSTEM IDLE. Waiting for Tech Unit to initiate uplink...</div>
 
     <div class="inbox" id="emailContainer">
         
@@ -98,130 +99,4 @@
 
         <div class="email clue">
             <div class="email-header">FROM: <span class="sender">Inspector Chen</span> | SUBJECT: Location Ping</div>
-            <p>Cell tower data is in. The suspect was definitely NOT at the <span class="highlight">Cinema</span> and NOT at the <span class="highlight">Park</span> at 8:00 PM.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">Inspector Costa</span> | SUBJECT: Age Estimate</div>
-            <p>Just interviewed a witness who got a good look at the suspect running away. They are absolutely certain the perp is older than <span class="highlight">25</span> years old.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">CSI Lab - Forensics</span> | SUBJECT: Handedness</div>
-            <p>The lock to the server room was picked. The angle of the scratch marks confirms the perp is <span class="highlight">Left-handed</span>.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">Inspector Vance</span> | SUBJECT: Clothing ID</div>
-            <p>Pulled blurry hallway footage. It's tough to see, but the suspect is definitely wearing a <span class="highlight">Green</span> shirt.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">CSI Lab - Trace Evidence</span> | SUBJECT: Vehicle Brand</div>
-            <p>Tire tread analysis from the alleyway matches a <span class="highlight">Ford</span>.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">CSI Lab - Biometrics</span> | SUBJECT: Height Measurement</div>
-            <p>The suspect tripped the laser doorway sensors. Based on the angle, we calculate their height is strictly greater than <span class="highlight">160 cm</span>.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">CSI Lab - Genetics</span> | SUBJECT: Hair DNA Trace</div>
-            <p>We found a hair snagged on the server rack. DNA confirms the suspect has <span class="highlight">Brown</span> hair.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">CSI Lab - Serology</span> | SUBJECT: Blood Type</div>
-            <p>The suspect cut themselves on the broken glass. Blood type is very rare: Type <span class="highlight">AB</span>.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">CSI Lab - Serology</span> | SUBJECT: Rh Factor Update</div>
-            <p>Following up on the blood work: The Rh factor is <span class="highlight">Negative (-)</span>.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">Inspector Ramirez</span> | SUBJECT: License Plate Partial</div>
-            <p>Traffic AI enhanced the footage. We can't see the whole license plate, but it definitely contains the numbers <span class="highlight">78</span> in that exact order.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">Inspector Chen</span> | SUBJECT: Eye Color</div>
-            <p>The barista witness just remembered another detail. They confirm the suspect's eyes were <span class="highlight">Green</span>.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">Inspector Costa</span> | SUBJECT: Tattoos</div>
-            <p>Got a clear shot of their wrist from camera 2. The suspect has a <span class="highlight">Snake</span> tattoo.</p>
-        </div>
-
-        <div class="email clue">
-            <div class="email-header">FROM: <span class="sender">CSI Lab - Forensics</span> | SUBJECT: Final Clue - Footprints</div>
-            <p>Plaster casts of the muddy footprints confirm the suspect was wearing a <span class="highlight">Boot</span>, and their shoe size is strictly greater than <span class="highlight">40</span>. Techs, if you processed the data correctly, you should only have ONE suspect left. Send us a name so we can make the arrest!</p>
-        </div>
-    </div>
-
-    <script>
-        let currentClue = 0;
-        const clues = document.querySelectorAll('.clue');
-        const statusDiv = document.getElementById('status');
-        const btn = document.getElementById('startBtn');
-        const intro = document.getElementById('introEmail');
-        let timerInterval;
-
-        function getRandomTime() {
-            // *** TEACHER TESTING TIP ***
-            // Change '2' to '0', and the '2' below to '2', then '* 60' to '* 1' to test it in seconds!
-            const randomMinutes = Math.floor(Math.random() * 2) + 2; 
-            return randomMinutes * 60; 
-        }
-
-        function startInvestigation() {
-            btn.disabled = true;
-            intro.style.display = 'block'; 
-            
-            // Deliver the very first clue IMMEDIATELY
-            clues[currentClue].style.display = 'block';
-            currentClue++;
-            
-            // Queue up the timer for the remaining clues
-            queueNextClue();
-        }
-
-        function queueNextClue() {
-            if (currentClue < clues.length) {
-                let timeLeft = getRandomTime();
-                
-                timerInterval = setInterval(() => {
-                    let minutes = Math.floor(timeLeft / 60);
-                    let seconds = timeLeft % 60;
-                    
-                    minutes = minutes < 10 ? '0' + minutes : minutes;
-                    seconds = seconds < 10 ? '0' + seconds : seconds;
-
-                    statusDiv.innerText = `Field agents transmitting... Next encrypted packet in: ${minutes}:${seconds}`;
-                    timeLeft--;
-
-                    if (timeLeft < 0) {
-                        clearInterval(timerInterval);
-                        deliverClue();
-                    }
-                }, 1000); 
-            }
-        }
-
-        function deliverClue() {
-            clues[currentClue].style.display = 'block';
-            currentClue++;
-            
-            if(currentClue === clues.length) {
-                statusDiv.innerText = "All data transmitted. Identify the culprit!";
-                statusDiv.style.color = "#00ff00";
-            } else {
-                queueNextClue();
-            }
-        }
-    </script>
-</body>
-</html>
+            <p>Cell tower data is in. The suspect was definitely NOT at the
