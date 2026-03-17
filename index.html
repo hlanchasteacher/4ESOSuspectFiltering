@@ -610,12 +610,14 @@
         .error-content { text-align: center; padding: 32px; }
         .error-code {
             font-family: var(--head);
-            font-size: 72px;
+            font-size: 28px;
             font-weight: 800;
+            letter-spacing: 4px;
             color: var(--red);
             line-height: 1;
             text-shadow: 0 0 30px rgba(224,58,58,0.5);
             margin-bottom: 8px;
+            text-transform: uppercase;
         }
         .error-title {
             font-family: var(--head);
@@ -801,7 +803,7 @@
         <!-- MAIN FEED -->
         <div class="feed-area">
             <div class="feed-header">
-                <span class="feed-title">🔐 Secure Encrypted Transmission Log</span>
+                <span class="feed-title">SECURE ENCRYPTED TRANSMISSION LOG</span>
                 <span class="feed-count" id="feedCount">0 / 15 packets received</span>
             </div>
 
@@ -812,7 +814,7 @@
                     <div class="email-header-bar">
                         <span class="email-classification urgent">URGENT</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: Lead Inspector Silva &lt;silva@fcid.gov&gt;</span>
+                            <span class="email-from">FROM: Lead Inspector Silva &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="74071d1802153412171d105a131b02">[email&#160;protected]</a>&gt;</span>
                             <span class="email-subject">SUBJECT: CASE FC-2024-0817 — The Aegis Corp R&amp;D Heist</span>
                         </div>
                         <span class="email-timestamp">UPLINK ESTABLISHED</span>
@@ -820,7 +822,7 @@
                     <div class="email-body">
                         <p>Tech Unit, we have a critical corporate espionage case. Last night, a highly classified prototype was stolen from the Aegis Corp R&amp;D vault. Field inspectors and the CSI lab are actively gathering forensic evidence and will transmit clues to your terminal as they become available.</p>
                         <p>You have been granted access to the city's 1,000-person suspect database. Download the encrypted file below, open it in Excel, and use the incoming evidence to filter down to a single suspect. When you have identified the culprit, file the arrest warrant using the button above. SWAT Team Alpha is on standby.</p>
-                        <a href="suspect_database.xlsx" download="suspect_database.xlsx" class="download-btn">📥 DOWNLOAD SUSPECT DATABASE (XLSX)</a>
+                        <a href="suspect_database.xlsx" download="suspect_database.xlsx" class="download-btn">DOWNLOAD SUSPECT DATABASE (XLSX)</a>
                     </div>
                 </div>
 
@@ -829,13 +831,13 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: Inspector Ramirez &lt;ramirez@fcid.gov&gt;</span>
+                            <span class="email-from">FROM: Inspector Ramirez &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7002111d1902150a30161319145e171f06">[email&#160;protected]</a>&gt;</span>
                             <span class="email-subject">SUBJECT: Getaway Vehicle — Color Analysis</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
                     </div>
                     <div class="email-body">
-                        <p>Reviewing street cam footage outside Aegis Corp. The getaway vehicle is either <span class="highlight">⬤ Black</span> or <span class="highlight">⬤ Silver</span>. Filter your database accordingly.</p>
+                        <p>Reviewing street cam footage outside Aegis Corp. The getaway vehicle is either <span class="highlight">Black</span> or <span class="highlight">Silver</span>. Filter your database accordingly.</p>
                     </div>
                 </div>
 
@@ -843,13 +845,13 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: Inspector Chen &lt;chen@fcid.gov&gt;</span>
+                            <span class="email-from">FROM: Inspector Chen &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="17747f72795771747e7339707861">[email&#160;protected]</a>&gt;</span>
                             <span class="email-subject">SUBJECT: Cell Tower Location Ping — 20:00 hrs</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
                     </div>
                     <div class="email-body">
-                        <p>Cell tower data confirmed. Suspect was definitively <strong>NOT</strong> at the <span class="highlight">🎬 Cinema</span> and <strong>NOT</strong> at the <span class="highlight">🌳 Park</span> at 20:00 hrs. Eliminate those location records.</p>
+                        <p>Cell tower data confirmed. Suspect was definitively <strong>NOT</strong> at the <span class="highlight">Cinema</span> and <strong>NOT</strong> at the <span class="highlight">Park</span> at 20:00 hrs. Eliminate those location records.</p>
                     </div>
                 </div>
 
@@ -857,7 +859,7 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: Inspector Costa &lt;costa@fcid.gov&gt;</span>
+                            <span class="email-from">FROM: Inspector Costa &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="32515d4146537254515b561c555d44">[email&#160;protected]</a>&gt;</span>
                             <span class="email-subject">SUBJECT: Witness Statement — Age Estimate</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
@@ -871,13 +873,13 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: CSI Lab — Forensics &lt;forensics@fcid.gov&gt;</span>
+                            <span class="email-from">FROM: CSI Lab — Forensics &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="33555c41565d405a50407355505a571d545c45">[email&#160;protected]</a>&gt;</span>
                             <span class="email-subject">SUBJECT: Lock-Pick Analysis — Vault Door</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
                     </div>
                     <div class="email-body">
-                        <p>The R&amp;D vault lock was manually bypassed. Scratch mark angle analysis conclusively identifies the perpetrator as <span class="highlight">✋ Left-Handed</span>.</p>
+                        <p>The R&amp;D vault lock was manually bypassed. Scratch mark angle analysis conclusively identifies the perpetrator as <span class="highlight">Left-Handed</span>.</p>
                     </div>
                 </div>
 
@@ -885,13 +887,13 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: Inspector Vance &lt;vance@fcid.gov&gt;</span>
+                            <span class="email-from">FROM: Inspector Vance &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0771666964624761646e6329606871">[email&#160;protected]</a>&gt;</span>
                             <span class="email-subject">SUBJECT: Hallway CCTV — Clothing Identification</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
                     </div>
                     <div class="email-body">
-                        <p>Enhanced hallway footage analyzed. Despite image degradation, the suspect's upper garment is confirmed: <span class="highlight">🟢 Green Shirt</span>. Update your filter.</p>
+                        <p>Enhanced hallway footage analyzed. Despite image degradation, the suspect's upper garment is confirmed: <span class="highlight">Green Shirt</span>. Update your filter.</p>
                     </div>
                 </div>
 
@@ -899,13 +901,13 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: CSI Lab — Trace Evidence &lt;trace@fcid.gov&gt;</span>
+                            <span class="email-from">FROM: CSI Lab — Trace Evidence &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="20545241434560464349440e474f56">[email&#160;protected]</a>&gt;</span>
                             <span class="email-subject">SUBJECT: Tire Tread Analysis — Alleyway</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
                     </div>
                     <div class="email-body">
-                        <p>Tire tread impressions recovered from the alley behind Aegis Corp. Pattern cross-referenced with manufacturer database: confirms vehicle brand is <span class="highlight">🚗 Ford</span>.</p>
+                        <p>Tire tread impressions recovered from the alley behind Aegis Corp. Pattern cross-referenced with manufacturer database: confirms vehicle brand is <span class="highlight">Ford</span>.</p>
                     </div>
                 </div>
 
@@ -913,13 +915,13 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: CSI Lab — Biometrics &lt;biometrics@fcid.gov&gt;</span>
+                            <span class="email-from">FROM: CSI Lab — Biometrics &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0e6c6761636b7a7c676d7d4e686d676a20696178">[email&#160;protected]</a>&gt;</span>
                             <span class="email-subject">SUBJECT: Laser Sensor Breach — Height Calculation</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
                     </div>
                     <div class="email-body">
-                        <p>Vault entry point equipped with laser tripwire sensors. Breach angle trigonometry calculates perpetrator height as strictly greater than <span class="highlight">📐 160 cm</span>. Filter Height &gt; 160.</p>
+                        <p>Vault entry point equipped with laser tripwire sensors. Breach angle trigonometry calculates perpetrator height as strictly greater than <span class="highlight">160 cm</span>. Filter Height &gt; 160.</p>
                     </div>
                 </div>
 
@@ -927,13 +929,13 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: CSI Lab — Genetics &lt;genetics@fcid.gov&gt;</span>
+                            <span class="email-from">FROM: CSI Lab — Genetics &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6e090b000b1a070d1d2e080d070a40090118">[email&#160;protected]</a>&gt;</span>
                             <span class="email-subject">SUBJECT: DNA Hair Trace — Vault Door Frame</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
                     </div>
                     <div class="email-body">
-                        <p>Biological sample recovered: hair follicle snagged on vault door frame. Full DNA analysis complete. Suspect hair colour: <span class="highlight">🟤 Brown</span>.</p>
+                        <p>Biological sample recovered: hair follicle snagged on vault door frame. Full DNA analysis complete. Suspect hair colour: <span class="highlight">Brown</span>.</p>
                     </div>
                 </div>
 
@@ -941,13 +943,13 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: CSI Lab — Serology &lt;serology@fcid.gov&gt;</span>
+                            <span class="email-from">FROM: CSI Lab — Serology &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="087b6d7a6764676f71486e6b616c266f677e">[email&#160;protected]</a>&gt;</span>
                             <span class="email-subject">SUBJECT: Blood Type Confirmation</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
                     </div>
                     <div class="email-body">
-                        <p>Suspect lacerated their hand on broken display glass. Blood recovered and typed. Result: <span class="highlight">🩸 Type AB</span>. Rare blood group — significantly narrows suspect pool.</p>
+                        <p>Suspect lacerated their hand on broken display glass. Blood recovered and typed. Result: <span class="highlight">Type AB</span>. Rare blood group — significantly narrows suspect pool.</p>
                     </div>
                 </div>
 
@@ -955,13 +957,13 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: CSI Lab — Serology &lt;serology@fcid.gov&gt;</span>
+                            <span class="email-from">FROM: CSI Lab — Serology &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d5a6b0a7bab9bab2ac95b3b6bcb1fbb2baa3">[email&#160;protected]</a>&gt;</span>
                             <span class="email-subject">SUBJECT: Rh Factor Supplement</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
                     </div>
                     <div class="email-body">
-                        <p>Follow-up to previous blood analysis. Extended serology confirms Rh factor: <span class="highlight">➖ Negative (−)</span>. Update database filter: Blood Type = AB−.</p>
+                        <p>Follow-up to previous blood analysis. Extended serology confirms Rh factor: <span class="highlight">Negative (−)</span>. Update database filter: Blood Type = AB−.</p>
                     </div>
                 </div>
 
@@ -969,7 +971,7 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: Inspector Ramirez &lt;ramirez@fcid.gov&gt;</span>
+                            <span class="email-from">FROM: Inspector Ramirez &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="97e5f6fafee5f2edd7f1f4fef3b9f0f8e1">[email&#160;protected]</a>&gt;</span>
                             <span class="email-subject">SUBJECT: License Plate — AI Enhancement</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
@@ -983,13 +985,13 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: Inspector Chen &lt;chen@fcid.gov&gt;</span>
+                            <span class="email-from">FROM: Inspector Chen &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dab9b2bfb49abcb9b3bef4bdb5ac">[email&#160;protected]</a>&gt;</span>
                             <span class="email-subject">SUBJECT: Barista Witness — Eye Colour</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
                     </div>
                     <div class="email-body">
-                        <p>Follow-up interview with coffee shop witness who interacted with suspect pre-heist. Additional recalled detail confirmed: suspect's eye colour is <span class="highlight">🟢 Green</span>.</p>
+                        <p>Follow-up interview with coffee shop witness who interacted with suspect pre-heist. Additional recalled detail confirmed: suspect's eye colour is <span class="highlight">Green</span>.</p>
                     </div>
                 </div>
 
@@ -997,13 +999,13 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: Inspector Costa &lt;costa@fcid.gov&gt;</span>
+                            <span class="email-from">FROM: Inspector Costa &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dcbfb3afa8bd9cbabfb5b8f2bbb3aa">[email&#160;protected]</a>&gt;</span>
                             <span class="email-subject">SUBJECT: Camera 2 — Tattoo Identification</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
                     </div>
                     <div class="email-body">
-                        <p>Isolated wrist-level shot from Camera 2, frame 847. Distinguishing mark confirmed: suspect bears a <span class="highlight">🐍 Snake</span> tattoo on wrist. Cross-reference with database.</p>
+                        <p>Isolated wrist-level shot from Camera 2, frame 847. Distinguishing mark confirmed: suspect bears a <span class="highlight">Snake</span> tattoo on wrist. Cross-reference with database.</p>
                     </div>
                 </div>
 
@@ -1011,13 +1013,13 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: CSI Lab — Forensics &lt;forensics@fcid.gov&gt;</span>
+                            <span class="email-from">FROM: CSI Lab — Forensics &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a8cec7dacdc6dbc1cbdbe8cecbc1cc86cfc7de">[email&#160;protected]</a>&gt;</span>
                             <span class="email-subject">SUBJECT: FINAL CLUE — Footprint Plaster Casts</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
                     </div>
                     <div class="email-body">
-                        <p>Plaster casts of muddy footprints outside service exit analysed. Footwear type: <span class="highlight">👢 Boot</span>. Shoe size strictly greater than <span class="highlight">Size 40</span>.</p>
+                        <p>Plaster casts of muddy footprints outside service exit analysed. Footwear type: <span class="highlight">Boot</span>. Shoe size strictly greater than <span class="highlight">Size 40</span>.</p>
                         <p style="margin-top:12px; color: var(--gold-light); font-family: var(--mono); font-size:13px;">⚑ ALL EVIDENCE TRANSMITTED. If your filters are correct, exactly ONE suspect remains. Proceed to FILE ARREST WARRANT.</p>
                     </div>
                 </div>
@@ -1058,7 +1060,7 @@
     <div id="errorModal" class="modal">
         <div class="modal-box danger">
             <div class="error-content">
-                <div class="error-code">❌</div>
+                <div class="error-code">ARREST FAILED</div>
                 <div class="error-title">Arrest Failed — Wrong Suspect</div>
                 <p>SWAT Team Alpha breached the location. The individual you identified is <strong>innocent</strong>.</p>
                 <p>The real culprit is still at large with the stolen prototype. Return to your database, review your Excel filters carefully, and re-submit when you have isolated the correct suspect.</p>
@@ -1071,7 +1073,7 @@
     <div id="successModal" class="modal">
         <div class="modal-box success-modal">
             <div class="success-content">
-                <div class="success-badge-icon">🏅</div>
+                <div class="success-badge-icon">★</div>
                 <div class="success-case-closed">✔ CASE CLOSED — SUSPECT SECURED</div>
                 <div class="success-name">VALERIE BLAKE</div>
                 <p>Outstanding work, Tech Unit. SWAT Team Alpha apprehended the suspect at the city perimeter as she attempted to flee with the stolen device.</p>
@@ -1085,7 +1087,7 @@
     </div>
 
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // ── CLOCK ──
         function updateClock() {
             const now = new Date();
@@ -1233,52 +1235,4 @@
 
             currentClue++;
             totalReceived++;
-            updateFeedCount();
-
-            isAlerting = true;
-            statusText.textContent = '>> ⚠ INCOMING ENCRYPTED PACKET — NEW FORENSIC DATA RECEIVED';
-            statusText.classList.add('alert');
-            statusDot.classList.remove('idle');
-
-            if (currentClue === clues.length) {
-                setTimeout(() => {
-                    statusText.textContent = '>> ALL FORENSIC DATA TRANSMITTED — SUBMIT ARREST WARRANT TO CLOSE CASE';
-                    statusText.classList.remove('alert');
-                }, 3000);
-                nextClueTime = 0; nextChatterTime = 0;
-            } else {
-                setTimeout(() => {
-                    isAlerting = false;
-                    statusText.classList.remove('alert');
-                    updateChatter();
-                    nextChatterTime = Date.now() + 7000;
-                    queueNextClue();
-                }, 3000);
-            }
-        }
-
-        function startInvestigation() {
-            btn.disabled = true;
-            intro.style.display = 'block';
-            statusDot.classList.remove('idle');
-            document.getElementById('uplinkStatus').textContent = 'ACTIVE';
-            document.getElementById('uplinkStatus').style.color = 'var(--green-ok)';
-
-            updateChatter();
-            nextChatterTime = Date.now() + 7000;
-
-            // First clue at 60 seconds  —  TEACHER TIP: change 60000 to 1000 to test in 1s
-            nextClueTime = Date.now() + 60000;
-
-            setInterval(() => {
-                const now = Date.now();
-                if (nextClueTime > 0 && now >= nextClueTime && !isAlerting) deliverClue();
-                if (nextChatterTime > 0 && now >= nextChatterTime && !isAlerting) {
-                    updateChatter();
-                    nextChatterTime = now + 7000;
-                }
-            }, 1000);
-        }
-    </script>
-</body>
-</html>
+            upda
