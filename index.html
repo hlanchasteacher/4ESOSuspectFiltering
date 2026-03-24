@@ -66,16 +66,8 @@
             border-right: 1px solid var(--border-bright);
             margin-right: 28px;
         }
-        .badge-icon {
-            width: 64px;
-            height: 64px;
-            flex-shrink: 0;
-        }
-        .badge-text-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 1px;
-        }
+        .badge-icon { width: 64px; height: 64px; flex-shrink: 0; }
+        .badge-text-stack { display: flex; flex-direction: column; gap: 1px; }
         .badge-dept {
             font-family: var(--head);
             font-size: 11px;
@@ -106,35 +98,12 @@
             align-items: center;
             padding: 16px 0;
         }
-        .system-id-block {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        .sys-label {
-            font-family: var(--mono);
-            font-size: 10px;
-            color: var(--muted);
-            letter-spacing: 2px;
-        }
-        .sys-value {
-            font-family: var(--mono);
-            font-size: 13px;
-            color: var(--blue-bright);
-        }
-        .divider-v {
-            width: 1px;
-            height: 36px;
-            background: var(--border-bright);
-            margin: 0 24px;
-        }
+        .system-id-block { display: flex; flex-direction: column; gap: 4px; }
+        .sys-label { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 2px; }
+        .sys-value { font-family: var(--mono); font-size: 13px; color: var(--blue-bright); }
+        .divider-v { width: 1px; height: 36px; background: var(--border-bright); margin: 0 24px; }
 
-        .banner-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px 0;
-        }
+        .banner-actions { display: flex; align-items: center; gap: 12px; padding: 16px 0; }
 
         .btn {
             font-family: var(--head);
@@ -217,38 +186,21 @@
             animation: pulse-dot 2s infinite;
         }
         .status-dot.idle { background: var(--gold); box-shadow: 0 0 6px var(--gold); animation: none; }
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-        .status-label {
-            font-family: var(--mono);
-            font-size: 10px;
-            color: var(--muted);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
-        .status-value {
-            font-family: var(--mono);
-            font-size: 11px;
-            color: var(--blue-bright);
-        }
+        @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        .status-label { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; }
+        .status-value { font-family: var(--mono); font-size: 11px; color: var(--blue-bright); }
         #statusText {
             font-family: var(--mono);
             font-size: 12px;
             color: var(--gold);
             text-shadow: 0 0 8px rgba(200,168,75,0.5);
-            animation: none;
         }
         #statusText.alert {
             color: #fff;
             text-shadow: 0 0 12px rgba(255,255,255,0.6);
             animation: text-flash 0.5s infinite;
         }
-        @keyframes text-flash {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.6; }
-        }
+        @keyframes text-flash { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
 
         /* ── MAIN LAYOUT ── */
         .workspace {
@@ -289,25 +241,12 @@
             border-bottom: 1px solid rgba(30,51,88,0.4);
         }
         .info-row:last-child { border-bottom: none; }
-        .info-key {
-            font-family: var(--mono);
-            font-size: 10px;
-            color: var(--muted);
-            letter-spacing: 1px;
-        }
-        .info-val {
-            font-family: var(--mono);
-            font-size: 11px;
-            color: var(--white);
-        }
+        .info-key { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 1px; }
+        .info-val { font-family: var(--mono); font-size: 11px; color: var(--white); }
         .info-val.live { color: var(--green-ok); }
         .info-val.gold { color: var(--gold); }
 
-        .clue-tracker {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
+        .clue-tracker { display: flex; flex-direction: column; gap: 6px; }
         .clue-item {
             display: flex;
             align-items: center;
@@ -325,51 +264,17 @@
             background: rgba(42,74,127,0.2);
         }
         .clue-item.received .clue-dot { background: var(--green-ok); box-shadow: 0 0 6px var(--green-ok); }
-        .clue-dot {
-            width: 7px; height: 7px; border-radius: 50%;
-            background: #334466;
-            flex-shrink: 0;
-        }
-        .clue-name {
-            font-family: var(--mono);
-            font-size: 10px;
-            color: var(--muted);
-        }
+        .clue-dot { width: 7px; height: 7px; border-radius: 50%; background: #334466; flex-shrink: 0; }
+        .clue-name { font-family: var(--mono); font-size: 10px; color: var(--muted); }
         .clue-item.received .clue-name { color: var(--white); }
 
         /* ── EMAIL FEED ── */
-        .feed-area {
-            padding: 24px 28px;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
+        .feed-area { padding: 24px 28px; display: flex; flex-direction: column; gap: 0; }
+        .feed-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        .feed-title { font-family: var(--head); font-size: 13px; font-weight: 700; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; }
+        .feed-count { font-family: var(--mono); font-size: 12px; color: var(--blue-bright); }
 
-        .feed-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        .feed-title {
-            font-family: var(--head);
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            color: var(--muted);
-            text-transform: uppercase;
-        }
-        .feed-count {
-            font-family: var(--mono);
-            font-size: 12px;
-            color: var(--blue-bright);
-        }
-
-        .inbox {
-            display: flex;
-            flex-direction: column-reverse;
-            gap: 12px;
-        }
+        .inbox { display: flex; flex-direction: column-reverse; gap: 12px; }
 
         .email {
             display: none;
@@ -379,10 +284,7 @@
             overflow: hidden;
             animation: slide-in 0.5s ease forwards;
         }
-        @keyframes slide-in {
-            from { opacity: 0; transform: translateY(-12px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes slide-in { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
 
         .email-header-bar {
             background: var(--navy-light);
@@ -405,24 +307,9 @@
         }
         .email-classification.urgent { background: var(--red); color: #fff; }
         .email-meta { display: flex; flex-direction: column; gap: 1px; }
-        .email-from {
-            font-family: var(--mono);
-            font-size: 11px;
-            color: var(--gold-light);
-        }
-        .email-subject {
-            font-family: var(--head);
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            color: var(--white);
-        }
-        .email-timestamp {
-            font-family: var(--mono);
-            font-size: 10px;
-            color: var(--muted);
-            text-align: right;
-        }
+        .email-from { font-family: var(--mono); font-size: 11px; color: var(--gold-light); }
+        .email-subject { font-family: var(--head); font-size: 13px; font-weight: 600; letter-spacing: 0.5px; color: var(--white); }
+        .email-timestamp { font-family: var(--mono); font-size: 10px; color: var(--muted); text-align: right; }
 
         .email-body {
             padding: 16px 18px;
@@ -502,10 +389,7 @@
             animation: modal-appear 0.25s ease;
             overflow: hidden;
         }
-        @keyframes modal-appear {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
+        @keyframes modal-appear { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         .modal-box.danger { border-color: var(--red); box-shadow: 0 0 60px rgba(0,0,0,0.8), 0 0 30px rgba(224,58,58,0.3); }
         .modal-box.success-modal { border-color: var(--green-ok); box-shadow: 0 0 60px rgba(0,0,0,0.8), 0 0 30px rgba(46,204,113,0.3); }
 
@@ -517,14 +401,7 @@
             align-items: center;
             gap: 12px;
         }
-        .modal-header .modal-title {
-            font-family: var(--head);
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            color: var(--white);
-            text-transform: uppercase;
-        }
+        .modal-header .modal-title { font-family: var(--head); font-size: 14px; font-weight: 700; letter-spacing: 3px; color: var(--white); text-transform: uppercase; }
         .modal-icon { font-size: 20px; }
         .modal-body { padding: 28px 28px 24px; }
         .modal-body p { font-size: 16px; color: #b0bdd4; line-height: 1.6; margin-bottom: 10px; }
@@ -543,15 +420,7 @@
         .draft-row .dr-val { color: var(--white); }
 
         .input-group { margin: 20px 0 24px; }
-        .input-label {
-            font-family: var(--mono);
-            font-size: 10px;
-            letter-spacing: 2px;
-            color: var(--muted);
-            display: block;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
+        .input-label { font-family: var(--mono); font-size: 10px; letter-spacing: 2px; color: var(--muted); display: block; margin-bottom: 8px; text-transform: uppercase; }
         input[type="text"] {
             width: 100%;
             padding: 14px 16px;
@@ -570,119 +439,37 @@
         }
         input[type="text"]::placeholder { color: #334455; }
 
-        .modal-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 28px 24px;
-        }
+        .modal-footer { display: flex; justify-content: space-between; align-items: center; padding: 0 28px 24px; }
         .btn-ghost {
-            font-family: var(--head);
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            background: transparent;
-            border: 1px solid var(--border-bright);
-            color: var(--muted);
-            cursor: pointer;
-            padding: 10px 20px;
-            transition: all 0.2s;
+            font-family: var(--head); font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+            background: transparent; border: 1px solid var(--border-bright); color: var(--muted); cursor: pointer; padding: 10px 20px; transition: all 0.2s;
         }
         .btn-ghost:hover { border-color: var(--white); color: var(--white); }
         .btn-send {
-            font-family: var(--head);
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, #7a2020, #b03030);
-            border: 1px solid #c04040;
-            color: var(--white);
-            cursor: pointer;
-            padding: 12px 28px;
-            box-shadow: 0 0 16px rgba(176,48,48,0.4);
-            transition: all 0.2s;
+            font-family: var(--head); font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+            background: linear-gradient(135deg, #7a2020, #b03030); border: 1px solid #c04040; color: var(--white); cursor: pointer;
+            padding: 12px 28px; box-shadow: 0 0 16px rgba(176,48,48,0.4); transition: all 0.2s;
         }
         .btn-send:hover { background: linear-gradient(135deg, #b03030, #d04040); box-shadow: 0 0 28px rgba(200,60,60,0.6); }
 
-        /* Error modal */
         .error-content { text-align: center; padding: 32px; }
-        .error-code {
-            font-family: var(--head);
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: 4px;
-            color: var(--red);
-            line-height: 1;
-            text-shadow: 0 0 30px rgba(224,58,58,0.5);
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-        .error-title {
-            font-family: var(--head);
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            color: var(--white);
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
+        .error-code { font-family: var(--head); font-size: 28px; font-weight: 800; letter-spacing: 4px; color: var(--red); line-height: 1; text-shadow: 0 0 30px rgba(224,58,58,0.5); margin-bottom: 8px; text-transform: uppercase; }
+        .error-title { font-family: var(--head); font-size: 22px; font-weight: 700; letter-spacing: 3px; color: var(--white); margin-bottom: 20px; text-transform: uppercase; }
         .error-content p { font-size: 16px; color: #b0bdd4; line-height: 1.6; margin-bottom: 10px; }
         .btn-return {
-            font-family: var(--head);
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            background: transparent;
-            border: 1px solid var(--red);
-            color: var(--red);
-            cursor: pointer;
-            padding: 12px 28px;
-            margin-top: 20px;
-            transition: all 0.2s;
+            font-family: var(--head); font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+            background: transparent; border: 1px solid var(--red); color: var(--red); cursor: pointer; padding: 12px 28px; margin-top: 20px; transition: all 0.2s;
         }
         .btn-return:hover { background: rgba(224,58,58,0.1); box-shadow: 0 0 16px rgba(224,58,58,0.3); }
 
-        /* Success modal */
         .success-content { text-align: center; padding: 36px; }
         .success-badge-icon { font-size: 56px; margin-bottom: 12px; filter: drop-shadow(0 0 20px rgba(46,204,113,0.5)); }
-        .success-case-closed {
-            font-family: var(--head);
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 5px;
-            color: var(--green-ok);
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-        .success-name {
-            font-family: var(--head);
-            font-size: 36px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: var(--white);
-            margin-bottom: 6px;
-        }
+        .success-case-closed { font-family: var(--head); font-size: 11px; font-weight: 700; letter-spacing: 5px; color: var(--green-ok); text-transform: uppercase; margin-bottom: 8px; }
+        .success-name { font-family: var(--head); font-size: 36px; font-weight: 800; letter-spacing: 2px; color: var(--white); margin-bottom: 6px; }
         .success-content p { font-size: 16px; color: #b0bdd4; line-height: 1.6; margin-bottom: 8px; }
-        .commendation {
-            background: rgba(46,204,113,0.08);
-            border: 1px solid rgba(46,204,113,0.3);
-            padding: 16px 20px;
-            margin: 20px 0 0;
-            font-family: var(--mono);
-            font-size: 13px;
-            color: var(--green-ok);
-            letter-spacing: 1px;
-        }
+        .commendation { background: rgba(46,204,113,0.08); border: 1px solid rgba(46,204,113,0.3); padding: 16px 20px; margin: 20px 0 0; font-family: var(--mono); font-size: 13px; color: var(--green-ok); letter-spacing: 1px; }
 
-        /* Clock */
-        #clock {
-            font-family: var(--mono);
-            font-size: 12px;
-            color: var(--blue-bright);
-        }
+        #clock { font-family: var(--mono); font-size: 12px; color: var(--blue-bright); }
     </style>
 </head>
 <body>
@@ -690,7 +477,6 @@
     <!-- ══════════════ TOP BANNER ══════════════ -->
     <div class="top-banner">
         <div class="banner-badge">
-            <!-- SVG Police Badge -->
             <svg class="badge-icon" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
                 <polygon points="40,4 52,12 66,10 72,23 82,32 78,46 82,60 68,66 60,78 46,74 34,78 20,66 6,60 10,46 6,32 16,23 22,10 36,12" fill="none" stroke="#c8a84b" stroke-width="2.5" transform="scale(0.9) translate(4,2)"/>
                 <polygon points="40,10 50,17 62,15 67,27 76,35 72,47 76,58 64,63 57,73 45,70 34,73 22,63 10,58 14,47 10,35 18,27 23,15 35,17" fill="#0b1a30" stroke="#e8c96a" stroke-width="1" transform="scale(0.9) translate(4,2)"/>
@@ -814,7 +600,7 @@
                     <div class="email-header-bar">
                         <span class="email-classification urgent">URGENT</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: Lead Inspector Silva &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="74071d1802153412171d105a131b02">[email&#160;protected]</a>&gt;</span>
+                            <span class="email-from">FROM: Lead Inspector Silva &lt;r.silva@fcid.gov&gt;</span>
                             <span class="email-subject">SUBJECT: CASE FC-2024-0817 — The Aegis Corp R&amp;D Heist</span>
                         </div>
                         <span class="email-timestamp">UPLINK ESTABLISHED</span>
@@ -822,16 +608,16 @@
                     <div class="email-body">
                         <p>Tech Unit, we have a critical corporate espionage case. Last night, a highly classified prototype was stolen from the Aegis Corp R&amp;D vault. Field inspectors and the CSI lab are actively gathering forensic evidence and will transmit clues to your terminal as they become available.</p>
                         <p>You have been granted access to the city's 1,000-person suspect database. Download the encrypted file below, open it in Excel, and use the incoming evidence to filter down to a single suspect. When you have identified the culprit, file the arrest warrant using the button above. SWAT Team Alpha is on standby.</p>
-                        <a href="suspect_database.xlsx" download="suspect_database.xlsx" class="download-btn">DOWNLOAD SUSPECT DATABASE (XLSX)</a>
+                        <a href="suspect_database.xlsx" download="suspect_database.xlsx" class="download-btn">⬇ DOWNLOAD SUSPECT DATABASE (XLSX)</a>
                     </div>
                 </div>
 
-                <!-- CLUES -->
+                <!-- CLUES (14 total) -->
                 <div class="email clue" data-tracker="ct-vehicle-color">
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: Inspector Ramirez &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7002111d1902150a30161319145e171f06">[email&#160;protected]</a>&gt;</span>
+                            <span class="email-from">FROM: Inspector Ramirez &lt;j.ramirez@fcid.gov&gt;</span>
                             <span class="email-subject">SUBJECT: Getaway Vehicle — Color Analysis</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
@@ -845,7 +631,7 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: Inspector Chen &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="17747f72795771747e7339707861">[email&#160;protected]</a>&gt;</span>
+                            <span class="email-from">FROM: Inspector Chen &lt;m.chen@fcid.gov&gt;</span>
                             <span class="email-subject">SUBJECT: Cell Tower Location Ping — 20:00 hrs</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
@@ -859,7 +645,7 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: Inspector Costa &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="32515d4146537254515b561c555d44">[email&#160;protected]</a>&gt;</span>
+                            <span class="email-from">FROM: Inspector Costa &lt;a.costa@fcid.gov&gt;</span>
                             <span class="email-subject">SUBJECT: Witness Statement — Age Estimate</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
@@ -873,7 +659,7 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: CSI Lab — Forensics &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="33555c41565d405a50407355505a571d545c45">[email&#160;protected]</a>&gt;</span>
+                            <span class="email-from">FROM: CSI Lab — Forensics &lt;csi.forensics@fcid.gov&gt;</span>
                             <span class="email-subject">SUBJECT: Lock-Pick Analysis — Vault Door</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
@@ -887,7 +673,7 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: Inspector Vance &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0771666964624761646e6329606871">[email&#160;protected]</a>&gt;</span>
+                            <span class="email-from">FROM: Inspector Vance &lt;t.vance@fcid.gov&gt;</span>
                             <span class="email-subject">SUBJECT: Hallway CCTV — Clothing Identification</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
@@ -901,7 +687,7 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: CSI Lab — Trace Evidence &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="20545241434560464349440e474f56">[email&#160;protected]</a>&gt;</span>
+                            <span class="email-from">FROM: CSI Lab — Trace Evidence &lt;csi.trace@fcid.gov&gt;</span>
                             <span class="email-subject">SUBJECT: Tire Tread Analysis — Alleyway</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
@@ -915,7 +701,7 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: CSI Lab — Biometrics &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0e6c6761636b7a7c676d7d4e686d676a20696178">[email&#160;protected]</a>&gt;</span>
+                            <span class="email-from">FROM: CSI Lab — Biometrics &lt;csi.biometrics@fcid.gov&gt;</span>
                             <span class="email-subject">SUBJECT: Laser Sensor Breach — Height Calculation</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
@@ -929,7 +715,7 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: CSI Lab — Genetics &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6e090b000b1a070d1d2e080d070a40090118">[email&#160;protected]</a>&gt;</span>
+                            <span class="email-from">FROM: CSI Lab — Genetics &lt;csi.genetics@fcid.gov&gt;</span>
                             <span class="email-subject">SUBJECT: DNA Hair Trace — Vault Door Frame</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
@@ -943,7 +729,7 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: CSI Lab — Serology &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="087b6d7a6764676f71486e6b616c266f677e">[email&#160;protected]</a>&gt;</span>
+                            <span class="email-from">FROM: CSI Lab — Serology &lt;csi.serology@fcid.gov&gt;</span>
                             <span class="email-subject">SUBJECT: Blood Type Confirmation</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
@@ -957,7 +743,7 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: CSI Lab — Serology &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d5a6b0a7bab9bab2ac95b3b6bcb1fbb2baa3">[email&#160;protected]</a>&gt;</span>
+                            <span class="email-from">FROM: CSI Lab — Serology &lt;csi.serology@fcid.gov&gt;</span>
                             <span class="email-subject">SUBJECT: Rh Factor Supplement</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
@@ -971,7 +757,7 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: Inspector Ramirez &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="97e5f6fafee5f2edd7f1f4fef3b9f0f8e1">[email&#160;protected]</a>&gt;</span>
+                            <span class="email-from">FROM: Inspector Ramirez &lt;j.ramirez@fcid.gov&gt;</span>
                             <span class="email-subject">SUBJECT: License Plate — AI Enhancement</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
@@ -985,7 +771,7 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: Inspector Chen &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dab9b2bfb49abcb9b3bef4bdb5ac">[email&#160;protected]</a>&gt;</span>
+                            <span class="email-from">FROM: Inspector Chen &lt;m.chen@fcid.gov&gt;</span>
                             <span class="email-subject">SUBJECT: Barista Witness — Eye Colour</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
@@ -999,7 +785,7 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: Inspector Costa &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dcbfb3afa8bd9cbabfb5b8f2bbb3aa">[email&#160;protected]</a>&gt;</span>
+                            <span class="email-from">FROM: Inspector Costa &lt;a.costa@fcid.gov&gt;</span>
                             <span class="email-subject">SUBJECT: Camera 2 — Tattoo Identification</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
@@ -1013,7 +799,7 @@
                     <div class="email-header-bar">
                         <span class="email-classification">CLUE</span>
                         <div class="email-meta">
-                            <span class="email-from">FROM: CSI Lab — Forensics &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a8cec7dacdc6dbc1cbdbe8cecbc1cc86cfc7de">[email&#160;protected]</a>&gt;</span>
+                            <span class="email-from">FROM: CSI Lab — Forensics &lt;csi.forensics@fcid.gov&gt;</span>
                             <span class="email-subject">SUBJECT: FINAL CLUE — Footprint Plaster Casts</span>
                         </div>
                         <span class="email-timestamp" data-ts></span>
@@ -1061,7 +847,7 @@
         <div class="modal-box danger">
             <div class="error-content">
                 <div class="error-code">ARREST FAILED</div>
-                <div class="error-title">Arrest Failed — Wrong Suspect</div>
+                <div class="error-title">Wrong Suspect</div>
                 <p>SWAT Team Alpha breached the location. The individual you identified is <strong>innocent</strong>.</p>
                 <p>The real culprit is still at large with the stolen prototype. Return to your database, review your Excel filters carefully, and re-submit when you have isolated the correct suspect.</p>
                 <button class="btn-return" onclick="closeError()">↩ RETURN TO CONSOLE</button>
@@ -1087,18 +873,18 @@
     </div>
 
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // ── CLOCK ──
         function updateClock() {
             const now = new Date();
-            document.getElementById('clock').textContent =
-                now.toTimeString().slice(0,8);
+            document.getElementById('clock').textContent = now.toTimeString().slice(0,8);
         }
         setInterval(updateClock, 1000);
         updateClock();
 
         // ── STATE ──
         let currentClue = 0;
+        let gameStarted = false;
         const clues = document.querySelectorAll('.clue');
         const statusText = document.getElementById('statusText');
         const statusDot = document.getElementById('statusDot');
@@ -1109,10 +895,9 @@
 
         let nextClueTime = 0;
         let nextChatterTime = 0;
-        let isAlerting = false;
-        let totalReceived = 1; // intro counts
+        let totalReceived = 0;
+        let gameLoopInterval = null;
 
-        const timestamps = [];
         function getTimestamp() {
             const now = new Date();
             return now.toTimeString().slice(0,8) + ' LOCAL';
@@ -1183,7 +968,7 @@
                 document.getElementById('successModal').classList.add('open');
                 playPing();
                 setTimeout(playPing, 250);
-                nextClueTime = 0; nextChatterTime = 0;
+                if (gameLoopInterval) clearInterval(gameLoopInterval);
             } else {
                 closeWarrant();
                 document.getElementById('errorModal').classList.add('open');
@@ -1195,39 +980,39 @@
             if (e.key === "Enter") { e.preventDefault(); submitWarrant(); }
         });
 
+        function updateFeedCount() {
+            feedCount.textContent = `${totalReceived} / 15 packets received`;
+            packetCount.textContent = totalReceived;
+        }
+
         function updateChatter() {
             const msg = chatterMessages[Math.floor(Math.random() * chatterMessages.length)];
             statusText.textContent = `>> ${msg}`;
             statusText.classList.remove('alert');
         }
 
-        function getRandomTime() {
-            // TEACHER TIP: change to * 1000 and values 1,2 for second-based testing
-            const mins = Math.floor(Math.random() * 2) + 2;
-            return mins * 60000;
-        }
-
-        function queueNextClue() {
-            if (currentClue < clues.length) nextClueTime = Date.now() + getRandomTime();
-            else nextClueTime = 0;
-        }
-
-        function updateFeedCount() {
-            feedCount.textContent = `${totalReceived} / 15 packets received`;
-            packetCount.textContent = totalReceived;
+        function getRandomClueDelay() {
+            // 2–3 minutes between clues (in ms)
+            return (Math.floor(Math.random() * 2) + 2) * 60 * 1000;
         }
 
         function deliverClue() {
             playPing();
 
-            // Timestamp
-            const tsEl = clues[currentClue].querySelector('[data-ts]');
+            const clueEl = clues[currentClue];
+
+            // Set timestamp
+            const tsEl = clueEl.querySelector('[data-ts]');
             if (tsEl) tsEl.textContent = getTimestamp();
 
-            clues[currentClue].style.display = 'block';
+            // Show the email
+            clueEl.style.display = 'block';
+
+            // Scroll to top of feed so new email is visible
+            clueEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
             // Sidebar tracker
-            const trackerKey = clues[currentClue].dataset.tracker;
+            const trackerKey = clueEl.dataset.tracker;
             if (trackerKey) {
                 const trackerEl = document.getElementById(trackerKey);
                 if (trackerEl) trackerEl.classList.add('received');
@@ -1235,4 +1020,73 @@
 
             currentClue++;
             totalReceived++;
-            upda
+            updateFeedCount();
+
+            // Flash status
+            const clueNum = totalReceived;
+            statusText.textContent = `>> INCOMING TRANSMISSION — EVIDENCE PACKET ${clueNum} RECEIVED`;
+            statusText.classList.add('alert');
+            setTimeout(() => {
+                statusText.classList.remove('alert');
+                updateChatter();
+            }, 3000);
+
+            // Schedule next clue or mark complete
+            if (currentClue < clues.length) {
+                nextClueTime = Date.now() + getRandomClueDelay();
+            } else {
+                nextClueTime = 0;
+                statusText.textContent = `>> ALL EVIDENCE TRANSMITTED — FILE ARREST WARRANT TO PROCEED`;
+                statusText.classList.add('alert');
+            }
+        }
+
+        function gameLoop() {
+            const now = Date.now();
+
+            // Deliver next clue if it's time
+            if (nextClueTime > 0 && now >= nextClueTime && currentClue < clues.length) {
+                deliverClue();
+            }
+
+            // Chatter messages
+            if (nextChatterTime > 0 && now >= nextChatterTime) {
+                updateChatter();
+                nextChatterTime = now + (15 + Math.random() * 15) * 1000; // every 15–30s
+            }
+        }
+
+        function startInvestigation() {
+            if (gameStarted) return;
+            gameStarted = true;
+
+            // Update button state
+            btn.disabled = true;
+            btn.textContent = '✔ UPLINK ACTIVE';
+
+            // Update status bar
+            statusDot.classList.remove('idle');
+            document.getElementById('uplinkStatus').textContent = 'ACTIVE';
+
+            // Show intro email immediately
+            intro.style.display = 'block';
+            totalReceived = 1;
+            updateFeedCount();
+
+            // Set up timing
+            nextClueTime = Date.now() + getRandomClueDelay();
+            nextChatterTime = Date.now() + 20000; // first chatter after 20s
+
+            statusText.textContent = `>> UPLINK ESTABLISHED — AWAITING FIRST EVIDENCE TRANSMISSION`;
+            statusText.classList.add('alert');
+            setTimeout(() => {
+                statusText.classList.remove('alert');
+                updateChatter();
+            }, 4000);
+
+            // Start the game loop (checks every second)
+            gameLoopInterval = setInterval(gameLoop, 1000);
+        }
+    </script>
+</body>
+</html>
